@@ -14,53 +14,55 @@ export default function ERD() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
       {/* Header */}
-      <header className="pillmate-gradient text-white p-6 rounded-b-3xl shadow-pillmate-lg">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
+      <header className="bg-gradient-to-r from-purple-100 to-purple-50 border-b border-purple-200/30 p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
             <Link
               to="/"
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-2 hover:bg-purple-200/30 rounded-xl transition-colors"
             >
-              <ArrowLeft className="h-6 w-6" />
+              <ArrowLeft className="h-6 w-6 text-purple-700" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">ERD PillMate</h1>
-              <p className="text-white/90">Entity Relationship Diagram</p>
+              <h1 className="text-2xl font-bold text-purple-900">
+                ERD PillMate
+              </h1>
+              <p className="text-purple-700">Entity Relationship Diagram</p>
             </div>
           </div>
-          <Database className="h-8 w-8 text-white/80" />
+          <Database className="h-8 w-8 text-purple-600" />
         </div>
       </header>
 
       <div className="p-6">
         {/* Controls */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Button
               variant="outline"
               size="sm"
               onClick={() => handleZoom("out")}
-              className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+              className="border-purple-300 text-purple-700 hover:bg-purple-50"
             >
               <ZoomOut className="h-4 w-4" />
             </Button>
-            <span className="text-sm text-gray-600 min-w-16 text-center">
+            <span className="text-sm text-purple-600 min-w-16 text-center font-medium">
               {zoomLevel}%
             </span>
             <Button
               variant="outline"
               size="sm"
               onClick={() => handleZoom("in")}
-              className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+              className="border-purple-300 text-purple-700 hover:bg-purple-50"
             >
               <ZoomIn className="h-4 w-4" />
             </Button>
           </div>
           <Button
             variant="outline"
-            className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+            className="border-purple-300 text-purple-700 hover:bg-purple-50"
           >
             <Download className="h-4 w-4 mr-2" />
             Unduh ERD
@@ -68,19 +70,19 @@ export default function ERD() {
         </div>
 
         {/* ERD Diagram */}
-        <div className="pillmate-card p-6 overflow-auto">
+        <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6 overflow-auto">
           <div
-            className="erd-container mx-auto"
+            className="erd-container mx-auto relative"
             style={{
               transform: `scale(${zoomLevel / 100})`,
               transformOrigin: "top center",
-              width: "800px",
-              minHeight: "600px",
+              width: "900px",
+              minHeight: "650px",
             }}
           >
             {/* Users Entity */}
-            <div className="absolute top-10 left-10 bg-white border-2 border-pillmate-primary rounded-lg p-4 w-48 shadow-lg">
-              <div className="bg-pillmate-primary text-white px-3 py-2 rounded text-center font-bold mb-3">
+            <div className="absolute top-10 left-10 bg-white border-2 border-purple-400 rounded-xl p-4 w-52 shadow-md">
+              <div className="bg-purple-500 text-white px-3 py-2 rounded-lg text-center font-bold mb-3">
                 USERS
               </div>
               <div className="space-y-1 text-sm">
@@ -88,19 +90,19 @@ export default function ERD() {
                   <span className="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>
                   <span className="font-semibold">user_id (PK)</span>
                 </div>
-                <div>• name</div>
-                <div>• email</div>
-                <div>• password</div>
-                <div>• phone</div>
-                <div>• birth_date</div>
-                <div>• created_at</div>
-                <div>• updated_at</div>
+                <div className="ml-5">name</div>
+                <div className="ml-5">email</div>
+                <div className="ml-5">password</div>
+                <div className="ml-5">phone</div>
+                <div className="ml-5">birth_date</div>
+                <div className="ml-5">created_at</div>
+                <div className="ml-5">updated_at</div>
               </div>
             </div>
 
             {/* Medications Entity */}
-            <div className="absolute top-10 right-10 bg-white border-2 border-pillmate-primary rounded-lg p-4 w-48 shadow-lg">
-              <div className="bg-pillmate-primary text-white px-3 py-2 rounded text-center font-bold mb-3">
+            <div className="absolute top-10 right-10 bg-white border-2 border-purple-400 rounded-xl p-4 w-52 shadow-md">
+              <div className="bg-purple-500 text-white px-3 py-2 rounded-lg text-center font-bold mb-3">
                 MEDICATIONS
               </div>
               <div className="space-y-1 text-sm">
@@ -108,17 +110,17 @@ export default function ERD() {
                   <span className="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>
                   <span className="font-semibold">medication_id (PK)</span>
                 </div>
-                <div>• name</div>
-                <div>• description</div>
-                <div>• manufacturer</div>
-                <div>• category</div>
-                <div>• created_at</div>
+                <div className="ml-5">name</div>
+                <div className="ml-5">description</div>
+                <div className="ml-5">manufacturer</div>
+                <div className="ml-5">category</div>
+                <div className="ml-5">created_at</div>
               </div>
             </div>
 
             {/* Schedules Entity */}
-            <div className="absolute top-80 left-1/2 transform -translate-x-1/2 bg-white border-2 border-pillmate-primary rounded-lg p-4 w-52 shadow-lg">
-              <div className="bg-pillmate-primary text-white px-3 py-2 rounded text-center font-bold mb-3">
+            <div className="absolute top-80 left-1/2 transform -translate-x-1/2 bg-white border-2 border-purple-400 rounded-xl p-4 w-56 shadow-md">
+              <div className="bg-purple-500 text-white px-3 py-2 rounded-lg text-center font-bold mb-3">
                 SCHEDULES
               </div>
               <div className="space-y-1 text-sm">
@@ -134,19 +136,19 @@ export default function ERD() {
                   <span className="w-3 h-3 bg-blue-400 rounded-full mr-2"></span>
                   <span className="font-semibold">medication_id (FK)</span>
                 </div>
-                <div>• dosage</div>
-                <div>• frequency</div>
-                <div>• start_date</div>
-                <div>• end_date</div>
-                <div>• reminder_enabled</div>
-                <div>• instruction</div>
-                <div>• created_at</div>
+                <div className="ml-5">dosage</div>
+                <div className="ml-5">frequency</div>
+                <div className="ml-5">start_date</div>
+                <div className="ml-5">end_date</div>
+                <div className="ml-5">reminder_enabled</div>
+                <div className="ml-5">instruction</div>
+                <div className="ml-5">created_at</div>
               </div>
             </div>
 
             {/* Schedule Times Entity */}
-            <div className="absolute bottom-32 left-20 bg-white border-2 border-pillmate-primary rounded-lg p-4 w-48 shadow-lg">
-              <div className="bg-pillmate-primary text-white px-3 py-2 rounded text-center font-bold mb-3">
+            <div className="absolute bottom-32 left-20 bg-white border-2 border-purple-400 rounded-xl p-4 w-52 shadow-md">
+              <div className="bg-purple-500 text-white px-3 py-2 rounded-lg text-center font-bold mb-3">
                 SCHEDULE_TIMES
               </div>
               <div className="space-y-1 text-sm">
@@ -158,14 +160,14 @@ export default function ERD() {
                   <span className="w-3 h-3 bg-blue-400 rounded-full mr-2"></span>
                   <span className="font-semibold">schedule_id (FK)</span>
                 </div>
-                <div>• time</div>
-                <div>• active</div>
+                <div className="ml-5">time</div>
+                <div className="ml-5">active</div>
               </div>
             </div>
 
             {/* Consumption History Entity */}
-            <div className="absolute bottom-32 right-20 bg-white border-2 border-pillmate-primary rounded-lg p-4 w-52 shadow-lg">
-              <div className="bg-pillmate-primary text-white px-3 py-2 rounded text-center font-bold mb-3">
+            <div className="absolute bottom-32 right-20 bg-white border-2 border-purple-400 rounded-xl p-4 w-56 shadow-md">
+              <div className="bg-purple-500 text-white px-3 py-2 rounded-lg text-center font-bold mb-3">
                 CONSUMPTION_HISTORY
               </div>
               <div className="space-y-1 text-sm">
@@ -177,24 +179,24 @@ export default function ERD() {
                   <span className="w-3 h-3 bg-blue-400 rounded-full mr-2"></span>
                   <span className="font-semibold">schedule_id (FK)</span>
                 </div>
-                <div>• consumption_date</div>
-                <div>• consumption_time</div>
-                <div>• status</div>
-                <div>• notes</div>
-                <div>• created_at</div>
+                <div className="ml-5">consumption_date</div>
+                <div className="ml-5">consumption_time</div>
+                <div className="ml-5">status</div>
+                <div className="ml-5">notes</div>
+                <div className="ml-5">created_at</div>
               </div>
             </div>
 
             {/* Relationship Lines */}
             <svg
               className="absolute inset-0 pointer-events-none"
-              width="800"
-              height="600"
+              width="900"
+              height="650"
             >
               {/* Users to Schedules */}
               <path
-                d="M 160 140 L 300 300"
-                stroke="#8B5CF6"
+                d="M 180 150 L 350 320"
+                stroke="#9333ea"
                 strokeWidth="2"
                 fill="none"
                 markerEnd="url(#arrowhead)"
@@ -202,8 +204,8 @@ export default function ERD() {
 
               {/* Medications to Schedules */}
               <path
-                d="M 550 140 L 450 300"
-                stroke="#8B5CF6"
+                d="M 650 150 L 500 320"
+                stroke="#9333ea"
                 strokeWidth="2"
                 fill="none"
                 markerEnd="url(#arrowhead)"
@@ -211,8 +213,8 @@ export default function ERD() {
 
               {/* Schedules to Schedule Times */}
               <path
-                d="M 350 400 L 200 450"
-                stroke="#8B5CF6"
+                d="M 380 420 L 250 480"
+                stroke="#9333ea"
                 strokeWidth="2"
                 fill="none"
                 markerEnd="url(#arrowhead)"
@@ -220,8 +222,8 @@ export default function ERD() {
 
               {/* Schedules to Consumption History */}
               <path
-                d="M 450 400 L 550 450"
-                stroke="#8B5CF6"
+                d="M 500 420 L 620 480"
+                stroke="#9333ea"
                 strokeWidth="2"
                 fill="none"
                 markerEnd="url(#arrowhead)"
@@ -236,30 +238,30 @@ export default function ERD() {
                   refY="3.5"
                   orient="auto"
                 >
-                  <polygon points="0 0, 10 3.5, 0 7" fill="#8B5CF6" />
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea" />
                 </marker>
               </defs>
             </svg>
 
             {/* Relationship Labels */}
-            <div className="absolute top-48 left-48 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+            <div className="absolute top-60 left-60 bg-white px-2 py-1 rounded border text-xs text-purple-700 font-medium">
               1:N
             </div>
-            <div className="absolute top-48 right-32 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+            <div className="absolute top-60 right-44 bg-white px-2 py-1 rounded border text-xs text-purple-700 font-medium">
               N:1
             </div>
-            <div className="absolute bottom-72 left-56 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+            <div className="absolute bottom-80 left-72 bg-white px-2 py-1 rounded border text-xs text-purple-700 font-medium">
               1:N
             </div>
-            <div className="absolute bottom-72 right-44 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+            <div className="absolute bottom-80 right-60 bg-white px-2 py-1 rounded border text-xs text-purple-700 font-medium">
               1:N
             </div>
           </div>
         </div>
 
         {/* Legend */}
-        <div className="mt-6 pillmate-card p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Keterangan:</h3>
+        <div className="mt-6 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+          <h3 className="font-semibold text-purple-900 mb-4">Keterangan</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
@@ -270,51 +272,60 @@ export default function ERD() {
               <span>Foreign Key (FK)</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-0.5 bg-pillmate-primary"></div>
+              <div className="w-4 h-0.5 bg-purple-500"></div>
               <span>Relasi antar entitas</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-pillmate-primary font-medium">1:N</span>
+              <span className="text-purple-700 font-medium">1:N</span>
               <span>One-to-Many relationship</span>
             </div>
           </div>
         </div>
 
         {/* Description */}
-        <div className="mt-6 pillmate-card p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="mt-6 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+          <h3 className="text-lg font-semibold text-purple-900 mb-4">
             Penjelasan ERD PillMate
           </h3>
-          <div className="space-y-3 text-gray-700">
+          <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              <strong>Entity Relationship Diagram (ERD)</strong> ini
-              menggambarkan struktur database untuk aplikasi PillMate yang
-              terdiri dari 5 entitas utama:
+              Entity Relationship Diagram ini menggambarkan struktur database
+              untuk aplikasi PillMate yang terdiri dari 5 entitas utama:
             </p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                <strong>USERS:</strong> Menyimpan data pengguna aplikasi
-              </li>
-              <li>
-                <strong>MEDICATIONS:</strong> Database obat-obatan yang tersedia
-              </li>
-              <li>
-                <strong>SCHEDULES:</strong> Jadwal konsumsi obat untuk setiap
-                pengguna
-              </li>
-              <li>
-                <strong>SCHEDULE_TIMES:</strong> Waktu-waktu spesifik dalam
-                jadwal
-              </li>
-              <li>
-                <strong>CONSUMPTION_HISTORY:</strong> Riwayat konsumsi obat
-                pengguna
-              </li>
-            </ul>
-            <p>
-              Relasi antar entitas dirancang untuk mendukung fungsionalitas
-              lengkap aplikasi pengingat obat dengan tracking yang akurat.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">USERS</h4>
+                <p className="text-sm">Menyimpan data pengguna aplikasi</p>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">
+                  MEDICATIONS
+                </h4>
+                <p className="text-sm">Database obat-obatan yang tersedia</p>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">
+                  SCHEDULES
+                </h4>
+                <p className="text-sm">
+                  Jadwal konsumsi obat untuk setiap pengguna
+                </p>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-800 mb-2">
+                  SCHEDULE_TIMES
+                </h4>
+                <p className="text-sm">Waktu-waktu spesifik dalam jadwal</p>
+              </div>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-purple-800 mb-2">
+                CONSUMPTION_HISTORY
+              </h4>
+              <p className="text-sm">
+                Riwayat konsumsi obat pengguna untuk tracking dan analisis
+              </p>
+            </div>
           </div>
         </div>
       </div>

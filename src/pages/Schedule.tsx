@@ -51,18 +51,16 @@ export default function Schedule() {
   ]);
 
   const categories = [
-    { id: "all", name: "Semua", emoji: "🏠", count: schedules.length },
+    { id: "all", name: "Semua", count: schedules.length },
     {
       id: "daily",
       name: "Harian",
-      emoji: "📅",
       count: schedules.filter((s) => s.frequency === "Setiap hari").length,
     },
-    { id: "weekly", name: "Mingguan", emoji: "📊", count: 0 },
+    { id: "weekly", name: "Mingguan", count: 0 },
     {
       id: "asneeded",
       name: "Bila Perlu",
-      emoji: "🔔",
       count: schedules.filter((s) => s.frequency === "Jika diperlukan").length,
     },
   ];
@@ -133,11 +131,9 @@ export default function Schedule() {
       <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              📅 Jadwal Obat
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">Jadwal Obat</h1>
             <p className="text-pillmate-primary/80 font-medium">
-              Kelola jadwal konsumsi obat dengan mudah ✨
+              Kelola jadwal konsumsi obat dengan mudah
             </p>
           </div>
           <CalendarIcon className="h-8 w-8 text-pillmate-primary/80 animate-pulse-gentle" />
@@ -147,8 +143,8 @@ export default function Schedule() {
       <div className="p-6 relative z-10">
         {/* Quick Actions */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            ⚡ Tambah Cepat
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Tambah Cepat
           </h3>
           <div className="grid grid-cols-3 gap-3">
             {quickActions.map((action, index) => (
@@ -180,7 +176,6 @@ export default function Schedule() {
                     : "bg-white/70 text-gray-700 hover:bg-pillmate-light border border-pillmate-secondary/30"
                 }`}
               >
-                <span className="text-lg">{category.emoji}</span>
                 <span className="font-medium">{category.name}</span>
                 <span
                   className={`text-xs px-2 py-1 rounded-full ${
@@ -202,7 +197,7 @@ export default function Schedule() {
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pillmate-primary h-5 w-5" />
             <Input
               type="text"
-              placeholder="Cari obat favorit..."
+              placeholder="Cari obat..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-12 pillmate-input"
@@ -222,26 +217,26 @@ export default function Schedule() {
             <div className="text-2xl font-bold text-blue-600 mb-1">
               {schedules.length}
             </div>
-            <p className="text-sm text-blue-800 font-medium">📋 Total Jadwal</p>
+            <p className="text-sm text-blue-800 font-medium">Total Jadwal</p>
           </div>
           <div className="pillmate-card-relaxed p-4 text-center bg-gradient-to-br from-relaxed-green/30 to-relaxed-green/10">
             <div className="text-2xl font-bold text-green-600 mb-1">
               {schedules.filter((s) => s.reminderEnabled).length}
             </div>
-            <p className="text-sm text-green-800 font-medium">🔔 Aktif</p>
+            <p className="text-sm text-green-800 font-medium">Aktif</p>
           </div>
           <div className="pillmate-card-relaxed p-4 text-center bg-gradient-to-br from-relaxed-orange/30 to-relaxed-orange/10">
             <div className="text-2xl font-bold text-orange-600 mb-1">
               {schedules.filter((s) => !s.reminderEnabled).length}
             </div>
-            <p className="text-sm text-orange-800 font-medium">⏸️ Nonaktif</p>
+            <p className="text-sm text-orange-800 font-medium">Nonaktif</p>
           </div>
         </div>
 
         {/* Schedule List */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-            📝 Daftar Jadwal ({filteredSchedules.length})
+          <h3 className="text-xl font-bold text-gray-900">
+            Daftar Jadwal ({filteredSchedules.length})
           </h3>
         </div>
 
@@ -265,18 +260,17 @@ export default function Schedule() {
             <div className="pillmate-card-relaxed p-8 text-center bg-gradient-to-br from-relaxed-pink/20 to-relaxed-blue/20">
               <CalendarIcon className="h-16 w-16 text-pillmate-primary/50 mx-auto mb-4 animate-float" />
               <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                {searchTerm
-                  ? "🔍 Jadwal tidak ditemukan"
-                  : "📝 Belum ada jadwal"}
+                {searchTerm ? "Jadwal tidak ditemukan" : "Belum ada jadwal"}
               </h3>
               <p className="text-gray-600 mb-4">
                 {searchTerm
                   ? `Tidak ada jadwal yang cocok dengan "${searchTerm}"`
-                  : "Yuk, tambahkan jadwal obat pertama Anda! 🎯"}
+                  : "Tambahkan jadwal obat pertama Anda"}
               </p>
               {!searchTerm && (
                 <Button className="pillmate-button">
-                  <Plus className="h-5 w-5 mr-2" />✨ Mulai Sekarang
+                  <Plus className="h-5 w-5 mr-2" />
+                  Mulai Sekarang
                 </Button>
               )}
             </div>
@@ -287,20 +281,20 @@ export default function Schedule() {
         {filteredSchedules.length > 0 && (
           <Button className="w-full pillmate-button flex items-center justify-center space-x-3 py-4 text-lg">
             <Plus className="h-6 w-6" />
-            <span>✨ Tambah Jadwal Baru</span>
+            <span>Tambah Jadwal Baru</span>
           </Button>
         )}
 
         {/* Tips Section */}
         <div className="mt-8 pillmate-card-relaxed p-6 bg-gradient-to-r from-relaxed-green/20 to-relaxed-blue/20">
-          <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-            💡 Tips Sehat
+          <h4 className="text-lg font-semibold text-gray-900 mb-3">
+            Tips Sehat
           </h4>
           <p className="text-gray-700 text-sm leading-relaxed">
-            <strong>🌟 Ingat:</strong> Konsistensi adalah kunci! Minum obat pada
+            <strong>Ingat:</strong> Konsistensi adalah kunci! Minum obat pada
             waktu yang sama setiap hari membantu tubuh beradaptasi dan
             meningkatkan efektivitas pengobatan. Jangan lupa untuk selalu
-            konsultasi dengan dokter ya! 👩‍⚕️
+            konsultasi dengan dokter.
           </p>
         </div>
       </div>

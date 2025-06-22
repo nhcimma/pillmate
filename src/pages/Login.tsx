@@ -49,7 +49,7 @@ export default function Login({ onLogin }: LoginProps) {
         <div className="text-center mb-8 slide-up">
           <PillMateLogo size="xl" className="justify-center mb-4" />
           <p className="text-pillmate-primary/80 text-lg font-medium">
-            Sahabat Kesehatan Digital Anda ✨
+            Sahabat Kesehatan Digital Anda
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export default function Login({ onLogin }: LoginProps) {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-3"
               >
-                📧 Email
+                Email
               </label>
               <Input
                 id="email"
@@ -82,7 +82,7 @@ export default function Login({ onLogin }: LoginProps) {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700 mb-3"
               >
-                🔐 Kata Sandi
+                Kata Sandi
               </label>
               <div className="relative">
                 <Input
@@ -109,7 +109,7 @@ export default function Login({ onLogin }: LoginProps) {
               type="submit"
               className="w-full pillmate-button text-lg py-4"
             >
-              🚀 Masuk ke PillMate
+              Masuk ke PillMate
             </Button>
           </form>
 
@@ -118,7 +118,7 @@ export default function Login({ onLogin }: LoginProps) {
               href="#"
               className="text-pillmate-primary hover:text-pillmate-accent text-sm font-medium transition-colors"
             >
-              🤔 Lupa Kata Sandi?
+              Lupa Kata Sandi?
             </a>
 
             <div className="text-sm text-gray-600">
@@ -127,7 +127,7 @@ export default function Login({ onLogin }: LoginProps) {
                 href="#"
                 className="text-pillmate-primary hover:text-pillmate-accent font-medium transition-colors"
               >
-                Daftar Yuk! 🎉
+                Daftar Sekarang
               </a>
             </div>
           </div>

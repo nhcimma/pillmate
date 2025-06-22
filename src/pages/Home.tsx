@@ -64,13 +64,6 @@ export default function Home({ onShowNotification }: HomeProps) {
     return "Selamat Malam";
   };
 
-  const getGreetingEmoji = () => {
-    if (currentHour < 12) return "🌅";
-    if (currentHour < 17) return "☀️";
-    if (currentHour < 21) return "🌆";
-    return "🌙";
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pillmate-light via-relaxed-pink/30 to-relaxed-blue/30">
       {/* Floating background elements */}
@@ -91,7 +84,7 @@ export default function Home({ onShowNotification }: HomeProps) {
             </div>
             <div>
               <p className="text-sm text-pillmate-primary/70 font-medium">
-                Halo Sahabat! 👋
+                Halo Pengguna
               </p>
               <h1 className="text-xl font-bold text-gray-900">Hikmah</h1>
             </div>
@@ -113,11 +106,11 @@ export default function Home({ onShowNotification }: HomeProps) {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-            {getGreeting()}, Hikmah! {getGreetingEmoji()}
+          <h2 className="text-2xl font-bold text-gray-900">
+            {getGreeting()}, Hikmah!
           </h2>
           <p className="text-pillmate-primary/80 font-medium">
-            Mari jaga kesehatan dengan rutin minum obat ✨
+            Mari jaga kesehatan dengan rutin minum obat
           </p>
         </div>
       </header>
@@ -133,7 +126,7 @@ export default function Home({ onShowNotification }: HomeProps) {
                 Progress Hari Ini
               </h3>
               <p className="text-sm text-gray-600">
-                {completedCount} dari {totalCount} obat sudah diminum 🎯
+                {completedCount} dari {totalCount} obat sudah diminum
               </p>
             </div>
             <div className="text-right">
@@ -157,7 +150,7 @@ export default function Home({ onShowNotification }: HomeProps) {
             className="relaxed-section bg-relaxed-blue/50 hover:bg-relaxed-blue/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
             <BarChart3 className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-blue-800">📊 ERD</p>
+            <p className="text-sm font-semibold text-blue-800">ERD</p>
             <p className="text-xs text-blue-600 mt-1">Database Design</p>
           </Link>
           <Link
@@ -165,7 +158,7 @@ export default function Home({ onShowNotification }: HomeProps) {
             className="relaxed-section bg-relaxed-green/50 hover:bg-relaxed-green/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
             <Calendar className="h-8 w-8 text-green-600 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-green-800">🔄 DFD</p>
+            <p className="text-sm font-semibold text-green-800">DFD</p>
             <p className="text-xs text-green-600 mt-1">Flow Diagram</p>
           </Link>
           <Link
@@ -173,22 +166,20 @@ export default function Home({ onShowNotification }: HomeProps) {
             className="relaxed-section bg-relaxed-orange/50 hover:bg-relaxed-orange/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
             <Settings className="h-8 w-8 text-orange-600 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-orange-800">✅ Validasi</p>
+            <p className="text-sm font-semibold text-orange-800">Validasi</p>
             <p className="text-xs text-orange-600 mt-1">System Check</p>
           </Link>
         </div>
 
         {/* Today's Schedule */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-            📅 Jadwal Hari Ini
-          </h3>
+          <h3 className="text-xl font-bold text-gray-900">Jadwal Hari Ini</h3>
           <Link to="/schedule">
             <Button
               variant="ghost"
               className="text-pillmate-primary hover:bg-pillmate-light/70 rounded-2xl font-medium"
             >
-              Lihat Semua ➡️
+              Lihat Semua
             </Button>
           </Link>
         </div>
@@ -212,17 +203,17 @@ export default function Home({ onShowNotification }: HomeProps) {
         <Link to="/schedule">
           <Button className="w-full pillmate-button flex items-center justify-center space-x-3 py-4 text-lg">
             <Plus className="h-6 w-6" />
-            <span>✨ Tambah Obat Baru</span>
+            <span>Tambah Obat Baru</span>
           </Button>
         </Link>
 
         {/* Motivational Quote */}
         <div className="mt-8 pillmate-card-relaxed p-6 text-center bg-gradient-to-r from-relaxed-pink/20 to-relaxed-blue/20">
           <p className="text-pillmate-primary font-medium text-lg mb-2">
-            💪 "Kesehatan adalah kekayaan sejati!"
+            "Kesehatan adalah kekayaan sejati"
           </p>
           <p className="text-sm text-gray-600">
-            Tetap semangat menjaga kesehatan ya! 🌟
+            Tetap semangat menjaga kesehatan
           </p>
         </div>
       </div>

@@ -20,29 +20,31 @@ export default function DFD() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
       {/* Header */}
-      <header className="pillmate-gradient text-white p-6 rounded-b-3xl shadow-pillmate-lg">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
+      <header className="bg-gradient-to-r from-purple-100 to-purple-50 border-b border-purple-200/30 p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
             <Link
               to="/"
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-2 hover:bg-purple-200/30 rounded-xl transition-colors"
             >
-              <ArrowLeft className="h-6 w-6" />
+              <ArrowLeft className="h-6 w-6 text-purple-700" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">DFD PillMate</h1>
-              <p className="text-white/90">Data Flow Diagram</p>
+              <h1 className="text-2xl font-bold text-purple-900">
+                DFD PillMate
+              </h1>
+              <p className="text-purple-700">Data Flow Diagram</p>
             </div>
           </div>
-          <GitBranch className="h-8 w-8 text-white/80" />
+          <GitBranch className="h-8 w-8 text-purple-600" />
         </div>
       </header>
 
       <div className="p-6">
         {/* Level Selector */}
-        <div className="flex space-x-2 mb-6">
+        <div className="flex space-x-3 mb-6">
           {dfdLevels.map((dfd) => (
             <Button
               key={dfd.level}
@@ -51,8 +53,8 @@ export default function DFD() {
               onClick={() => setSelectedLevel(dfd.level)}
               className={
                 selectedLevel === dfd.level
-                  ? "pillmate-button"
-                  : "border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+                  ? "bg-purple-500 hover:bg-purple-600 text-white"
+                  : "border-purple-300 text-purple-700 hover:bg-purple-50"
               }
             >
               {dfd.title}
@@ -62,30 +64,30 @@ export default function DFD() {
 
         {/* Controls */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Button
               variant="outline"
               size="sm"
               onClick={() => handleZoom("out")}
-              className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+              className="border-purple-300 text-purple-700 hover:bg-purple-50"
             >
               <ZoomOut className="h-4 w-4" />
             </Button>
-            <span className="text-sm text-gray-600 min-w-16 text-center">
+            <span className="text-sm text-purple-600 min-w-16 text-center font-medium">
               {zoomLevel}%
             </span>
             <Button
               variant="outline"
               size="sm"
               onClick={() => handleZoom("in")}
-              className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+              className="border-purple-300 text-purple-700 hover:bg-purple-50"
             >
               <ZoomIn className="h-4 w-4" />
             </Button>
           </div>
           <Button
             variant="outline"
-            className="border-pillmate-primary text-pillmate-primary hover:bg-pillmate-light"
+            className="border-purple-300 text-purple-700 hover:bg-purple-50"
           >
             <Download className="h-4 w-4 mr-2" />
             Unduh DFD
@@ -93,13 +95,13 @@ export default function DFD() {
         </div>
 
         {/* DFD Diagram */}
-        <div className="pillmate-card p-6 overflow-auto">
+        <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6 overflow-auto">
           <div
             className="dfd-container mx-auto relative"
             style={{
               transform: `scale(${zoomLevel / 100})`,
               transformOrigin: "top center",
-              width: "900px",
+              width: "1000px",
               minHeight: "700px",
             }}
           >
@@ -107,42 +109,40 @@ export default function DFD() {
               // Context Diagram (Level 0)
               <>
                 {/* Central System */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-32 rounded-full border-4 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-40 rounded-full border-4 border-purple-500 bg-purple-50 flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="font-bold text-pillmate-primary text-lg">
+                    <div className="font-bold text-purple-700 text-xl mb-1">
                       SISTEM
                     </div>
-                    <div className="font-bold text-pillmate-primary text-lg">
+                    <div className="font-bold text-purple-700 text-xl">
                       PILLMATE
                     </div>
                   </div>
                 </div>
 
                 {/* External Entities */}
-                {/* User */}
-                <div className="absolute top-20 left-20 w-32 h-24 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary">
+                <div className="absolute top-20 left-20 w-36 h-28 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800">
                     PENGGUNA
                   </div>
                 </div>
 
-                {/* Admin */}
-                <div className="absolute top-20 right-20 w-32 h-24 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary">
+                <div className="absolute top-20 right-20 w-36 h-28 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800">
                     ADMIN
                   </div>
                 </div>
 
-                {/* Notification System */}
-                <div className="absolute bottom-20 left-20 w-32 h-24 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary text-sm">
-                    SISTEM NOTIFIKASI
+                <div className="absolute bottom-20 left-20 w-36 h-28 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800 text-sm">
+                    SISTEM
+                    <br />
+                    NOTIFIKASI
                   </div>
                 </div>
 
-                {/* Database */}
-                <div className="absolute bottom-20 right-20 w-32 h-24 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary">
+                <div className="absolute bottom-20 right-20 w-36 h-28 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800">
                     DATABASE
                   </div>
                 </div>
@@ -150,20 +150,20 @@ export default function DFD() {
                 {/* Data Flows */}
                 <svg
                   className="absolute inset-0 pointer-events-none"
-                  width="900"
+                  width="1000"
                   height="700"
                 >
                   {/* User to System */}
                   <path
-                    d="M 150 80 Q 300 200 350 300"
-                    stroke="#8B5CF6"
+                    d="M 150 100 Q 300 200 400 330"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
                   />
                   <path
-                    d="M 370 280 Q 250 160 120 100"
-                    stroke="#8B5CF6"
+                    d="M 420 310 Q 280 180 120 120"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
@@ -171,15 +171,15 @@ export default function DFD() {
 
                   {/* Admin to System */}
                   <path
-                    d="M 750 80 Q 600 200 550 300"
-                    stroke="#8B5CF6"
+                    d="M 850 100 Q 700 200 600 330"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
                   />
                   <path
-                    d="M 530 280 Q 650 160 780 100"
-                    stroke="#8B5CF6"
+                    d="M 580 310 Q 720 180 880 120"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
@@ -187,8 +187,8 @@ export default function DFD() {
 
                   {/* System to Notification */}
                   <path
-                    d="M 350 400 Q 250 500 150 550"
-                    stroke="#8B5CF6"
+                    d="M 400 420 Q 300 520 150 580"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
@@ -196,15 +196,15 @@ export default function DFD() {
 
                   {/* System to Database */}
                   <path
-                    d="M 550 400 Q 650 500 750 550"
-                    stroke="#8B5CF6"
+                    d="M 600 420 Q 700 520 850 580"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
                   />
                   <path
-                    d="M 750 570 Q 650 520 530 420"
-                    stroke="#8B5CF6"
+                    d="M 850 600 Q 700 540 580 440"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
@@ -219,31 +219,31 @@ export default function DFD() {
                       refY="3.5"
                       orient="auto"
                     >
-                      <polygon points="0 0, 10 3.5, 0 7" fill="#8B5CF6" />
+                      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea" />
                     </marker>
                   </defs>
                 </svg>
 
                 {/* Data Flow Labels */}
-                <div className="absolute top-40 left-60 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
-                  Data Login, Jadwal Obat
+                <div className="absolute top-50 left-80 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
+                  Data Login & Jadwal
                 </div>
-                <div className="absolute top-60 left-40 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
-                  Konfirmasi, Pengingat
+                <div className="absolute top-80 left-60 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
+                  Konfirmasi & Pengingat
                 </div>
-                <div className="absolute top-40 right-60 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
-                  Data Admin, Config
+                <div className="absolute top-50 right-80 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
+                  Data Admin & Config
                 </div>
-                <div className="absolute top-60 right-40 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
-                  Laporan, Status
+                <div className="absolute top-80 right-60 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
+                  Laporan & Status
                 </div>
-                <div className="absolute bottom-60 left-60 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+                <div className="absolute bottom-80 left-80 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
                   Notifikasi Push
                 </div>
-                <div className="absolute bottom-60 right-60 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+                <div className="absolute bottom-80 right-80 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
                   Query Data
                 </div>
-                <div className="absolute bottom-40 right-40 bg-white px-2 py-1 rounded text-xs border text-pillmate-primary font-medium">
+                <div className="absolute bottom-60 right-60 bg-white px-3 py-1 rounded border text-xs text-purple-700 font-medium shadow-sm">
                   Result Data
                 </div>
               </>
@@ -251,140 +251,103 @@ export default function DFD() {
               // Level 1 DFD
               <>
                 {/* External Entities */}
-                <div className="absolute top-10 left-10 w-28 h-20 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary text-sm">
+                <div className="absolute top-10 left-10 w-32 h-24 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800 text-sm">
                     PENGGUNA
                   </div>
                 </div>
-                <div className="absolute top-10 right-10 w-28 h-20 bg-pillmate-light border-2 border-pillmate-primary rounded-lg flex items-center justify-center shadow-md">
-                  <div className="text-center font-semibold text-pillmate-primary text-sm">
+                <div className="absolute top-10 right-10 w-32 h-24 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="text-center font-semibold text-purple-800 text-sm">
                     ADMIN
                   </div>
                 </div>
 
                 {/* Processes */}
-                <div className="absolute top-80 left-20 w-32 h-32 rounded-full border-2 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute top-120 left-20 w-36 h-36 rounded-full border-2 border-purple-500 bg-white flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      1.0
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">1.0</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       AUTENTIKASI
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute top-80 left-80 w-32 h-32 rounded-full border-2 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute top-120 left-96 w-36 h-36 rounded-full border-2 border-purple-500 bg-white flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      2.0
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
-                      KELOLA JADWAL
+                    <div className="text-sm font-bold text-purple-700">2.0</div>
+                    <div className="text-xs font-semibold text-purple-700">
+                      KELOLA
+                      <br />
+                      JADWAL
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute top-80 right-20 w-32 h-32 rounded-full border-2 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute top-120 right-20 w-36 h-36 rounded-full border-2 border-purple-500 bg-white flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      3.0
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">3.0</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       PENGINGAT
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-80 left-50 w-32 h-32 rounded-full border-2 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute bottom-120 left-60 w-36 h-36 rounded-full border-2 border-purple-500 bg-white flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      4.0
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">4.0</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       TRACKING
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-80 right-50 w-32 h-32 rounded-full border-2 border-pillmate-primary bg-white flex items-center justify-center shadow-lg">
+                <div className="absolute bottom-120 right-60 w-36 h-36 rounded-full border-2 border-purple-500 bg-white flex items-center justify-center shadow-lg">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      5.0
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">5.0</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       LAPORAN
                     </div>
                   </div>
                 </div>
 
                 {/* Data Stores */}
-                <div className="absolute bottom-20 left-20 w-40 h-16 border-t-2 border-b-2 border-pillmate-primary bg-white flex items-center justify-center shadow-md">
+                <div className="absolute bottom-20 left-20 w-44 h-20 border-t-2 border-b-2 border-purple-500 bg-white flex items-center justify-center shadow-md">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      D1
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">D1</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       DATA PENGGUNA
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-20 left-80 w-40 h-16 border-t-2 border-b-2 border-pillmate-primary bg-white flex items-center justify-center shadow-md">
+                <div className="absolute bottom-20 left-96 w-44 h-20 border-t-2 border-b-2 border-purple-500 bg-white flex items-center justify-center shadow-md">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      D2
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">D2</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       DATA JADWAL
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-20 right-20 w-40 h-16 border-t-2 border-b-2 border-pillmate-primary bg-white flex items-center justify-center shadow-md">
+                <div className="absolute bottom-20 right-20 w-44 h-20 border-t-2 border-b-2 border-purple-500 bg-white flex items-center justify-center shadow-md">
                   <div className="text-center">
-                    <div className="text-xs font-bold text-pillmate-primary">
-                      D3
-                    </div>
-                    <div className="text-xs font-semibold text-pillmate-primary">
+                    <div className="text-sm font-bold text-purple-700">D3</div>
+                    <div className="text-xs font-semibold text-purple-700">
                       DATA RIWAYAT
                     </div>
                   </div>
                 </div>
 
-                {/* Data Flows - simplified for clarity */}
+                {/* Data Flow connections simplified */}
                 <svg
                   className="absolute inset-0 pointer-events-none"
-                  width="900"
+                  width="1000"
                   height="700"
                 >
-                  {/* User flows */}
+                  {/* Basic connections */}
                   <path
-                    d="M 60 50 L 80 120"
-                    stroke="#8B5CF6"
-                    strokeWidth="2"
-                    fill="none"
-                    markerEnd="url(#arrow)"
-                  />
-                  <path
-                    d="M 100 120 L 140 140"
-                    stroke="#8B5CF6"
-                    strokeWidth="2"
-                    fill="none"
-                    markerEnd="url(#arrow)"
-                  />
-
-                  {/* Process connections */}
-                  <path
-                    d="M 180 140 L 200 140"
-                    stroke="#8B5CF6"
-                    strokeWidth="2"
-                    fill="none"
-                    markerEnd="url(#arrow)"
-                  />
-                  <path
-                    d="M 240 140 L 280 140"
-                    stroke="#8B5CF6"
+                    d="M 70 50 L 100 150"
+                    stroke="#9333ea"
                     strokeWidth="2"
                     fill="none"
                     markerEnd="url(#arrow)"
@@ -399,7 +362,7 @@ export default function DFD() {
                       refY="3.5"
                       orient="auto"
                     >
-                      <polygon points="0 0, 10 3.5, 0 7" fill="#8B5CF6" />
+                      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea" />
                     </marker>
                   </defs>
                 </svg>
@@ -409,90 +372,120 @@ export default function DFD() {
         </div>
 
         {/* Legend */}
-        <div className="mt-6 pillmate-card p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Keterangan:</h3>
+        <div className="mt-6 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+          <h3 className="font-semibold text-purple-900 mb-4">Keterangan</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-4 border-2 border-pillmate-primary bg-pillmate-light rounded"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-6 border-2 border-purple-400 bg-purple-100 rounded"></div>
               <span>External Entity</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 border-2 border-pillmate-primary bg-white rounded-full"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 border-2 border-purple-500 bg-white rounded-full"></div>
               <span>Process</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-3 border-t-2 border-b-2 border-pillmate-primary bg-white"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-4 border-t-2 border-b-2 border-purple-500 bg-white"></div>
               <span>Data Store</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-0.5 bg-pillmate-primary"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-0.5 bg-purple-500"></div>
               <span>Data Flow</span>
             </div>
           </div>
         </div>
 
         {/* Description */}
-        <div className="mt-6 pillmate-card p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="mt-6 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+          <h3 className="text-lg font-semibold text-purple-900 mb-4">
             Penjelasan DFD PillMate
           </h3>
-          <div className="space-y-4 text-gray-700">
+          <div className="space-y-4 text-gray-700 leading-relaxed">
             {selectedLevel === 0 ? (
-              <div>
-                <h4 className="font-semibold text-pillmate-primary mb-2">
-                  Context Diagram (Level 0)
+              <div className="space-y-3">
+                <h4 className="font-semibold text-purple-700">
+                  Context Diagram
                 </h4>
                 <p>
                   Menunjukkan sistem PillMate sebagai satu kesatuan yang
                   berinteraksi dengan entitas eksternal:
                 </p>
-                <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-                  <li>
-                    <strong>Pengguna:</strong> Memberikan data login dan jadwal
-                    obat, menerima pengingat
-                  </li>
-                  <li>
-                    <strong>Admin:</strong> Mengelola konfigurasi sistem dan
-                    menerima laporan
-                  </li>
-                  <li>
-                    <strong>Sistem Notifikasi:</strong> Mengirim notifikasi push
-                    ke perangkat pengguna
-                  </li>
-                  <li>
-                    <strong>Database:</strong> Menyimpan dan menyediakan data
-                    aplikasi
-                  </li>
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      Pengguna
+                    </h5>
+                    <p className="text-sm">
+                      Memberikan data login dan jadwal obat, menerima pengingat
+                    </p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      Admin
+                    </h5>
+                    <p className="text-sm">
+                      Mengelola konfigurasi sistem dan menerima laporan
+                    </p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      Sistem Notifikasi
+                    </h5>
+                    <p className="text-sm">
+                      Mengirim notifikasi push ke perangkat pengguna
+                    </p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      Database
+                    </h5>
+                    <p className="text-sm">
+                      Menyimpan dan menyediakan data aplikasi
+                    </p>
+                  </div>
+                </div>
               </div>
             ) : (
-              <div>
-                <h4 className="font-semibold text-pillmate-primary mb-2">
-                  Level 1 DFD
-                </h4>
+              <div className="space-y-3">
+                <h4 className="font-semibold text-purple-700">Level 1 DFD</h4>
                 <p>Memecah sistem menjadi 5 proses utama:</p>
-                <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-                  <li>
-                    <strong>1.0 Autentikasi:</strong> Mengelola login dan
-                    registrasi pengguna
-                  </li>
-                  <li>
-                    <strong>2.0 Kelola Jadwal:</strong> Membuat, mengubah, dan
-                    menghapus jadwal obat
-                  </li>
-                  <li>
-                    <strong>3.0 Pengingat:</strong> Mengirim notifikasi tepat
-                    waktu
-                  </li>
-                  <li>
-                    <strong>4.0 Tracking:</strong> Mencatat konsumsi obat dan
-                    status
-                  </li>
-                  <li>
-                    <strong>5.0 Laporan:</strong> Menghasilkan laporan dan
-                    analisis
-                  </li>
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      1.0 Autentikasi
+                    </h5>
+                    <p className="text-sm">
+                      Mengelola login dan registrasi pengguna
+                    </p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      2.0 Kelola Jadwal
+                    </h5>
+                    <p className="text-sm">
+                      Membuat, mengubah, dan menghapus jadwal obat
+                    </p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      3.0 Pengingat
+                    </h5>
+                    <p className="text-sm">Mengirim notifikasi tepat waktu</p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">
+                      4.0 Tracking
+                    </h5>
+                    <p className="text-sm">Mencatat konsumsi obat dan status</p>
+                  </div>
+                </div>
+                <div className="bg-purple-50 p-4 rounded-lg">
+                  <h5 className="font-semibold text-purple-800 mb-2">
+                    5.0 Laporan
+                  </h5>
+                  <p className="text-sm">
+                    Menghasilkan laporan dan analisis kepatuhan
+                  </p>
+                </div>
               </div>
             )}
           </div>

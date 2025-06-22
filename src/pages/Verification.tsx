@@ -178,9 +178,9 @@ export default function Verification() {
     switch (status) {
       case "completed":
       case "passed":
-        return <CheckCircle className="h-5 w-5 text-pillmate-success" />;
+        return <CheckCircle className="h-5 w-5 text-green-600" />;
       case "in-progress":
-        return <AlertCircle className="h-5 w-5 text-pillmate-warning" />;
+        return <AlertCircle className="h-5 w-5 text-orange-500" />;
       default:
         return <XCircle className="h-5 w-5 text-gray-400" />;
     }
@@ -205,54 +205,56 @@ export default function Verification() {
     switch (status) {
       case "completed":
       case "passed":
-        return "bg-green-100 text-green-800";
+        return "bg-green-100 text-green-800 border-green-200";
       case "in-progress":
-        return "bg-orange-100 text-orange-800";
+        return "bg-orange-100 text-orange-800 border-orange-200";
       default:
-        return "bg-gray-100 text-gray-600";
+        return "bg-gray-100 text-gray-600 border-gray-200";
     }
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
       {/* Header */}
-      <header className="pillmate-gradient text-white p-6 rounded-b-3xl shadow-pillmate-lg">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
+      <header className="bg-gradient-to-r from-purple-100 to-purple-50 border-b border-purple-200/30 p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
             <Link
               to="/"
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-2 hover:bg-purple-200/30 rounded-xl transition-colors"
             >
-              <ArrowLeft className="h-6 w-6" />
+              <ArrowLeft className="h-6 w-6 text-purple-700" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">Verifikasi & Validasi</h1>
-              <p className="text-white/90">Pengujian Sistem PillMate</p>
+              <h1 className="text-2xl font-bold text-purple-900">
+                Verifikasi & Validasi
+              </h1>
+              <p className="text-purple-700">Pengujian Sistem PillMate</p>
             </div>
           </div>
-          <CheckCircle className="h-8 w-8 text-white/80" />
+          <CheckCircle className="h-8 w-8 text-purple-600" />
         </div>
       </header>
 
       <div className="p-6">
         {/* Tab Navigation */}
-        <div className="flex space-x-2 mb-6">
+        <div className="flex space-x-3 mb-6">
           <button
             onClick={() => setActiveTab("process")}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`px-6 py-3 rounded-xl text-sm font-medium transition-colors ${
               activeTab === "process"
-                ? "bg-pillmate-primary text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-pillmate-light"
+                ? "bg-purple-500 text-white shadow-md"
+                : "bg-white text-purple-700 hover:bg-purple-50 border border-purple-200"
             }`}
           >
             Proses Pengembangan
           </button>
           <button
             onClick={() => setActiveTab("functions")}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`px-6 py-3 rounded-xl text-sm font-medium transition-colors ${
               activeTab === "functions"
-                ? "bg-pillmate-primary text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-pillmate-light"
+                ? "bg-purple-500 text-white shadow-md"
+                : "bg-white text-purple-700 hover:bg-purple-50 border border-purple-200"
             }`}
           >
             Fungsi Aplikasi
@@ -262,47 +264,47 @@ export default function Verification() {
         {activeTab === "process" ? (
           // Process Verification
           <div className="space-y-6">
-            <div className="pillmate-card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+              <h3 className="text-lg font-semibold text-purple-900 mb-4">
                 Verifikasi Proses Pengembangan Software
               </h3>
-              <p className="text-gray-600 mb-6">
-                Pemeriksaan tahapan-tahapan dalam pengembangan aplikasi PillMate
-                untuk memastikan setiap fase telah dilakukan dengan benar.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Pemeriksaan tahapan dalam pengembangan aplikasi PillMate untuk
+                memastikan setiap fase telah dilakukan dengan benar sesuai
+                metodologi pengembangan software.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {processChecks.map((phase, index) => (
                   <div
                     key={index}
-                    className="border border-gray-200 rounded-xl p-4"
+                    className="border border-purple-100 rounded-xl p-5"
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <h4 className="text-lg font-semibold text-purple-900">
                         {index + 1}. {phase.phase}
                       </h4>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-3">
                         {getStatusIcon(phase.status)}
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBg(phase.status)}`}
+                          className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusBg(phase.status)}`}
                         >
                           {getStatusText(phase.status)}
                         </span>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {phase.items.map((item, itemIndex) => (
                         <div
                           key={itemIndex}
-                          className="flex items-center justify-between py-2"
+                          className="flex items-center justify-between p-3 bg-purple-50 rounded-lg"
                         >
-                          <span className="text-gray-700">{item.check}</span>
+                          <span className="text-gray-700 text-sm">
+                            {item.check}
+                          </span>
                           <div className="flex items-center space-x-2">
                             {getStatusIcon(item.status)}
-                            <span className="text-sm text-gray-500">
-                              {getStatusText(item.status)}
-                            </span>
                           </div>
                         </div>
                       ))}
@@ -313,32 +315,32 @@ export default function Verification() {
             </div>
 
             {/* Summary */}
-            <div className="pillmate-card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+              <h3 className="text-lg font-semibold text-purple-900 mb-4">
                 Ringkasan Progress
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-success mb-1">
+                <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="text-2xl font-bold text-green-600 mb-1">
                     2
                   </div>
-                  <p className="text-sm text-gray-600">Fase Selesai</p>
+                  <p className="text-sm text-green-800">Fase Selesai</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-warning mb-1">
+                <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <div className="text-2xl font-bold text-orange-600 mb-1">
                     1
                   </div>
-                  <p className="text-sm text-gray-600">Dalam Proses</p>
+                  <p className="text-sm text-orange-800">Dalam Proses</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-400 mb-1">2</div>
-                  <p className="text-sm text-gray-600">Menunggu</p>
+                <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-600 mb-1">2</div>
+                  <p className="text-sm text-gray-700">Menunggu</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-primary mb-1">
+                <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div className="text-2xl font-bold text-purple-600 mb-1">
                     60%
                   </div>
-                  <p className="text-sm text-gray-600">Progress Total</p>
+                  <p className="text-sm text-purple-800">Progress Total</p>
                 </div>
               </div>
             </div>
@@ -346,13 +348,14 @@ export default function Verification() {
         ) : (
           // Function Validation
           <div className="space-y-6">
-            <div className="pillmate-card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+              <h3 className="text-lg font-semibold text-purple-900 mb-4">
                 Validasi Fungsi Aplikasi
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 leading-relaxed">
                 Pengujian setiap fungsi aplikasi PillMate untuk memastikan
-                bekerja sesuai dengan kebutuhan pengguna.
+                bekerja sesuai dengan kebutuhan pengguna dan spesifikasi yang
+                telah ditetapkan.
               </p>
 
               <div className="space-y-6">
@@ -366,18 +369,18 @@ export default function Verification() {
                   return (
                     <div
                       key={index}
-                      className="border border-gray-200 rounded-xl p-4"
+                      className="border border-purple-100 rounded-xl p-5"
                     >
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-3">
-                          <div className="p-2 bg-pillmate-light rounded-lg">
-                            <Icon className="h-6 w-6 text-pillmate-primary" />
+                          <div className="p-3 bg-purple-100 rounded-xl">
+                            <Icon className="h-6 w-6 text-purple-600" />
                           </div>
-                          <h4 className="text-lg font-semibold text-gray-900">
+                          <h4 className="text-lg font-semibold text-purple-900">
                             {category.category}
                           </h4>
                         </div>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
                           {passedTests}/{totalTests} berhasil
                         </div>
                       </div>
@@ -386,22 +389,22 @@ export default function Verification() {
                         {category.tests.map((test, testIndex) => (
                           <div
                             key={testIndex}
-                            className="border-l-4 border-gray-200 pl-4 py-2"
+                            className="bg-purple-50 rounded-lg p-4"
                           >
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
-                                <div className="flex items-center space-x-2 mb-1">
+                                <div className="flex items-center space-x-3 mb-2">
                                   {getStatusIcon(test.status)}
-                                  <span className="font-medium text-gray-900">
+                                  <span className="font-medium text-purple-900">
                                     {test.function}
                                   </span>
                                   <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusBg(test.status)}`}
+                                    className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusBg(test.status)}`}
                                   >
                                     {getStatusText(test.status)}
                                   </span>
                                 </div>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-gray-600 ml-8">
                                   {test.description}
                                 </p>
                               </div>
@@ -416,32 +419,32 @@ export default function Verification() {
             </div>
 
             {/* Test Summary */}
-            <div className="pillmate-card p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+              <h3 className="text-lg font-semibold text-purple-900 mb-4">
                 Ringkasan Pengujian
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-success mb-1">
+                <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="text-2xl font-bold text-green-600 mb-1">
                     12
                   </div>
-                  <p className="text-sm text-gray-600">Test Berhasil</p>
+                  <p className="text-sm text-green-800">Test Berhasil</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-warning mb-1">
+                <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <div className="text-2xl font-bold text-orange-600 mb-1">
                     3
                   </div>
-                  <p className="text-sm text-gray-600">Dalam Proses</p>
+                  <p className="text-sm text-orange-800">Dalam Proses</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-400 mb-1">1</div>
-                  <p className="text-sm text-gray-600">Menunggu</p>
+                <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-600 mb-1">1</div>
+                  <p className="text-sm text-gray-700">Menunggu</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pillmate-primary mb-1">
+                <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div className="text-2xl font-bold text-purple-600 mb-1">
                     75%
                   </div>
-                  <p className="text-sm text-gray-600">Success Rate</p>
+                  <p className="text-sm text-purple-800">Success Rate</p>
                 </div>
               </div>
             </div>
@@ -449,27 +452,41 @@ export default function Verification() {
         )}
 
         {/* Conclusion */}
-        <div className="mt-8 pillmate-card p-6 bg-gradient-to-r from-pillmate-light to-white">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="mt-8 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
+          <h3 className="text-lg font-semibold text-purple-900 mb-4">
             Kesimpulan Verifikasi & Validasi
           </h3>
-          <div className="space-y-3 text-gray-700">
-            <p>
-              <strong>Verifikasi Proses:</strong> Tahapan pengembangan software
-              telah mengikuti metodologi yang benar dengan 60% progress
-              completion. Fase analisis dan desain telah selesai dengan baik.
-            </p>
-            <p>
-              <strong>Validasi Fungsi:</strong> Sebagian besar fungsi aplikasi
-              (75%) telah bekerja dengan baik dan sesuai kebutuhan. Fungsi inti
-              seperti autentikasi, manajemen jadwal, dan notifikasi sudah
-              berfungsi optimal.
-            </p>
-            <p>
-              <strong>Rekomendasi:</strong> Aplikasi PillMate siap untuk tahap
-              testing lanjutan dan dapat dilanjutkan ke fase deployment dengan
-              perbaikan minor pada fungsi yang masih dalam pengembangan.
-            </p>
+          <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+              <h4 className="font-semibold text-purple-800 mb-2">
+                Verifikasi Proses
+              </h4>
+              <p className="text-sm">
+                Tahapan pengembangan software telah mengikuti metodologi yang
+                benar dengan 60% progress completion. Fase analisis dan desain
+                telah selesai dengan baik.
+              </p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+              <h4 className="font-semibold text-purple-800 mb-2">
+                Validasi Fungsi
+              </h4>
+              <p className="text-sm">
+                Sebagian besar fungsi aplikasi (75%) telah bekerja dengan baik
+                dan sesuai kebutuhan. Fungsi inti seperti autentikasi, manajemen
+                jadwal, dan notifikasi sudah berfungsi optimal.
+              </p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+              <h4 className="font-semibold text-purple-800 mb-2">
+                Rekomendasi
+              </h4>
+              <p className="text-sm">
+                Aplikasi PillMate siap untuk tahap testing lanjutan dan dapat
+                dilanjutkan ke fase deployment dengan perbaikan minor pada
+                fungsi yang masih dalam pengembangan.
+              </p>
+            </div>
           </div>
         </div>
       </div>
