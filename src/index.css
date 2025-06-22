@@ -11,7 +11,7 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 262 83% 58%;
+    --primary: 255 85% 65%;
     --primary-foreground: 210 40% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -23,17 +23,26 @@
     --destructive-foreground: 210 40% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 262 83% 58%;
+    --ring: 255 85% 65%;
     --radius: 0.75rem;
 
-    /* PillMate specific colors */
-    --pillmate-primary: 262 83% 58%; /* Purple main */
-    --pillmate-secondary: 267 84% 81%; /* Light purple */
-    --pillmate-accent: 280 87% 65%; /* Bright purple */
-    --pillmate-light: 270 100% 98%; /* Very light purple */
+    /* PillMate soft purple colors - easy on the eyes */
+    --pillmate-primary: 255 85% 65%; /* Soft lavender purple */
+    --pillmate-secondary: 260 60% 85%; /* Very light purple */
+    --pillmate-accent: 250 75% 70%; /* Medium soft purple */
+    --pillmate-light: 255 100% 97%; /* Almost white with purple tint */
+    --pillmate-muted: 250 50% 90%; /* Muted purple for backgrounds */
+    --pillmate-gradient-start: 260 100% 96%; /* Gradient start */
+    --pillmate-gradient-end: 250 100% 98%; /* Gradient end */
     --pillmate-success: 142 76% 36%; /* Green for completed */
     --pillmate-warning: 45 93% 47%; /* Orange for pending */
     --pillmate-error: 0 84% 60%; /* Red for missed */
+
+    /* Relaxed color palette */
+    --relaxed-blue: 210 100% 92%; /* Soft blue */
+    --relaxed-pink: 330 100% 95%; /* Soft pink */
+    --relaxed-green: 120 60% 90%; /* Soft green */
+    --relaxed-orange: 25 100% 90%; /* Soft orange */
   }
 
   .dark {
@@ -43,7 +52,7 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 267 84% 81%;
+    --primary: 260 60% 85%;
     --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -55,13 +64,14 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 267 84% 81%;
+    --ring: 260 60% 85%;
 
     /* PillMate dark theme colors */
-    --pillmate-primary: 267 84% 81%;
-    --pillmate-secondary: 262 83% 58%;
-    --pillmate-accent: 280 87% 65%;
+    --pillmate-primary: 260 60% 85%;
+    --pillmate-secondary: 255 85% 65%;
+    --pillmate-accent: 250 75% 70%;
     --pillmate-light: 240 10% 3.9%;
+    --pillmate-muted: 240 3.7% 15.9%;
     --pillmate-success: 142 76% 36%;
     --pillmate-warning: 45 93% 47%;
     --pillmate-error: 0 84% 60%;
@@ -81,31 +91,52 @@
   .pillmate-gradient {
     background: linear-gradient(
       135deg,
-      hsl(var(--pillmate-primary)) 0%,
-      hsl(var(--pillmate-accent)) 100%
+      hsl(var(--pillmate-gradient-start)) 0%,
+      hsl(var(--pillmate-primary)) 50%,
+      hsl(var(--pillmate-gradient-end)) 100%
+    );
+  }
+
+  .pillmate-gradient-soft {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--pillmate-light)) 0%,
+      hsl(var(--pillmate-secondary)) 100%
     );
   }
 
   .pillmate-card {
-    @apply bg-white rounded-2xl shadow-pillmate border border-gray-100;
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100/50 backdrop-blur-sm;
+  }
+
+  .pillmate-card-relaxed {
+    @apply bg-white/80 rounded-3xl shadow-xl border border-purple-100/30 backdrop-blur-md;
   }
 
   .pillmate-button {
-    @apply bg-pillmate-primary hover:bg-pillmate-accent text-white font-medium py-3 px-6 rounded-full transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105;
+    @apply bg-pillmate-primary hover:bg-pillmate-accent text-white font-medium py-3 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  .pillmate-button-soft {
+    @apply bg-pillmate-secondary hover:bg-pillmate-primary text-pillmate-primary hover:text-white font-medium py-3 px-6 rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105;
   }
 
   .pillmate-input {
-    @apply w-full px-4 py-3 rounded-full border border-gray-200 focus:border-pillmate-primary focus:ring-2 focus:ring-pillmate-primary/20 outline-none transition-all duration-200;
+    @apply w-full px-4 py-3 rounded-2xl border border-gray-200/50 focus:border-pillmate-primary focus:ring-2 focus:ring-pillmate-primary/20 outline-none transition-all duration-200 bg-white/70 backdrop-blur-sm;
+  }
+
+  .relaxed-section {
+    @apply rounded-3xl p-6 backdrop-blur-sm border border-white/20;
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - softer */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
+  background: hsl(var(--pillmate-light));
 }
 
 ::-webkit-scrollbar-thumb {
@@ -115,4 +146,50 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--pillmate-accent));
+}
+
+/* Relaxed animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+.slide-up {
+  animation: slide-up 0.5s ease-out;
 }

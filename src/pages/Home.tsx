@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Plus, Bell, Settings, User, Calendar, BarChart3 } from "lucide-react";
+import {
+  Plus,
+  Bell,
+  Settings,
+  User,
+  Calendar,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MedicationCard, Medication } from "@/components/medication-card";
 import { Link } from "react-router-dom";
@@ -56,61 +64,85 @@ export default function Home({ onShowNotification }: HomeProps) {
     return "Selamat Malam";
   };
 
+  const getGreetingEmoji = () => {
+    if (currentHour < 12) return "🌅";
+    if (currentHour < 17) return "☀️";
+    if (currentHour < 21) return "🌆";
+    return "🌙";
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-pillmate-light via-relaxed-pink/30 to-relaxed-blue/30">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 right-10 w-32 h-32 bg-pillmate-secondary/20 rounded-full blur-2xl animate-float"></div>
+        <div
+          className="absolute top-1/3 left-5 w-24 h-24 bg-relaxed-green/30 rounded-full blur-xl animate-float"
+          style={{ animationDelay: "3s" }}
+        ></div>
+      </div>
+
       {/* Header */}
-      <header className="pillmate-gradient text-white p-6 rounded-b-3xl shadow-pillmate-lg">
-        <div className="flex items-center justify-between mb-4">
+      <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
+        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-              <User className="h-6 w-6 text-white" />
+            <div className="w-12 h-12 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+              <User className="h-6 w-6 text-pillmate-primary" />
             </div>
             <div>
-              <p className="text-sm opacity-90">Pengguna</p>
-              <h1 className="text-xl font-semibold">Hikmah</h1>
+              <p className="text-sm text-pillmate-primary/70 font-medium">
+                Halo Sahabat! 👋
+              </p>
+              <h1 className="text-xl font-bold text-gray-900">Hikmah</h1>
             </div>
           </div>
           <div className="flex space-x-2">
             <button
               onClick={onShowNotification}
-              className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+              className="p-3 bg-white/20 rounded-2xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
             >
-              <Bell className="h-6 w-6 text-white" />
+              <Bell className="h-6 w-6 text-pillmate-primary" />
             </button>
             <Link
               to="/profile"
-              className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+              className="p-3 bg-white/20 rounded-2xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
             >
-              <Settings className="h-6 w-6 text-white" />
+              <Settings className="h-6 w-6 text-pillmate-primary" />
             </Link>
           </div>
         </div>
 
-        <h2 className="text-2xl font-bold mb-2">{getGreeting()}, Hikmah 👋</h2>
-        <p className="text-white/90">
-          Mari jaga kesehatan dengan rutin minum obat
-        </p>
+        <div className="space-y-2">
+          <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            {getGreeting()}, Hikmah! {getGreetingEmoji()}
+          </h2>
+          <p className="text-pillmate-primary/80 font-medium">
+            Mari jaga kesehatan dengan rutin minum obat ✨
+          </p>
+        </div>
       </header>
 
-      {/* Stats Card */}
-      <div className="p-6">
-        <div className="pillmate-card p-4 mb-6">
+      {/* Content */}
+      <div className="p-6 relative z-10">
+        {/* Stats Card */}
+        <div className="pillmate-card-relaxed p-6 mb-6 slide-up">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+              <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-pillmate-primary" />
                 Progress Hari Ini
               </h3>
               <p className="text-sm text-gray-600">
-                {completedCount} dari {totalCount} obat sudah diminum
+                {completedCount} dari {totalCount} obat sudah diminum 🎯
               </p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-pillmate-primary">
+              <div className="text-4xl font-bold text-pillmate-primary mb-2">
                 {completionRate}%
               </div>
-              <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-24 h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full pillmate-gradient transition-all duration-500"
+                  className="h-full pillmate-gradient transition-all duration-1000 rounded-full"
                   style={{ width: `${completionRate}%` }}
                 />
               </div>
@@ -119,62 +151,80 @@ export default function Home({ onShowNotification }: HomeProps) {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-3 gap-4 mb-8">
           <Link
             to="/erd"
-            className="pillmate-card p-4 text-center hover:shadow-pillmate-lg transition-all"
+            className="relaxed-section bg-relaxed-blue/50 hover:bg-relaxed-blue/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
-            <BarChart3 className="h-8 w-8 text-pillmate-primary mx-auto mb-2" />
-            <p className="text-sm font-medium text-gray-700">ERD</p>
+            <BarChart3 className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+            <p className="text-sm font-semibold text-blue-800">📊 ERD</p>
+            <p className="text-xs text-blue-600 mt-1">Database Design</p>
           </Link>
           <Link
             to="/dfd"
-            className="pillmate-card p-4 text-center hover:shadow-pillmate-lg transition-all"
+            className="relaxed-section bg-relaxed-green/50 hover:bg-relaxed-green/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
-            <Calendar className="h-8 w-8 text-pillmate-primary mx-auto mb-2" />
-            <p className="text-sm font-medium text-gray-700">DFD</p>
+            <Calendar className="h-8 w-8 text-green-600 mx-auto mb-3" />
+            <p className="text-sm font-semibold text-green-800">🔄 DFD</p>
+            <p className="text-xs text-green-600 mt-1">Flow Diagram</p>
           </Link>
           <Link
             to="/verification"
-            className="pillmate-card p-4 text-center hover:shadow-pillmate-lg transition-all"
+            className="relaxed-section bg-relaxed-orange/50 hover:bg-relaxed-orange/70 text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
-            <Settings className="h-8 w-8 text-pillmate-primary mx-auto mb-2" />
-            <p className="text-sm font-medium text-gray-700">Validasi</p>
+            <Settings className="h-8 w-8 text-orange-600 mx-auto mb-3" />
+            <p className="text-sm font-semibold text-orange-800">✅ Validasi</p>
+            <p className="text-xs text-orange-600 mt-1">System Check</p>
           </Link>
         </div>
 
         {/* Today's Schedule */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-gray-900">
-            Jadwal Hari Ini
+          <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            📅 Jadwal Hari Ini
           </h3>
           <Link to="/schedule">
             <Button
               variant="ghost"
-              className="text-pillmate-primary hover:bg-pillmate-light"
+              className="text-pillmate-primary hover:bg-pillmate-light/70 rounded-2xl font-medium"
             >
-              Lihat Semua
+              Lihat Semua ➡️
             </Button>
           </Link>
         </div>
 
-        <div className="space-y-3 mb-6">
-          {medications.map((medication) => (
-            <MedicationCard
+        <div className="space-y-4 mb-8">
+          {medications.map((medication, index) => (
+            <div
               key={medication.id}
-              medication={medication}
-              onStatusChange={handleStatusChange}
-            />
+              className="slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <MedicationCard
+                medication={medication}
+                onStatusChange={handleStatusChange}
+              />
+            </div>
           ))}
         </div>
 
         {/* Add Medication Button */}
         <Link to="/schedule">
-          <Button className="w-full pillmate-button flex items-center justify-center space-x-2">
-            <Plus className="h-5 w-5" />
-            <span>Tambah Obat</span>
+          <Button className="w-full pillmate-button flex items-center justify-center space-x-3 py-4 text-lg">
+            <Plus className="h-6 w-6" />
+            <span>✨ Tambah Obat Baru</span>
           </Button>
         </Link>
+
+        {/* Motivational Quote */}
+        <div className="mt-8 pillmate-card-relaxed p-6 text-center bg-gradient-to-r from-relaxed-pink/20 to-relaxed-blue/20">
+          <p className="text-pillmate-primary font-medium text-lg mb-2">
+            💪 "Kesehatan adalah kekayaan sejati!"
+          </p>
+          <p className="text-sm text-gray-600">
+            Tetap semangat menjaga kesehatan ya! 🌟
+          </p>
+        </div>
       </div>
     </div>
   );

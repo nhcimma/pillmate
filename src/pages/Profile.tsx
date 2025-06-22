@@ -10,6 +10,10 @@ import {
   Phone,
   Calendar,
   Plus,
+  Star,
+  Settings,
+  Heart,
+  Smile,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -34,66 +38,135 @@ export default function Profile() {
     phone: "+62 812 3456 7890",
     birthDate: "15 Januari 1990",
     joinDate: "1 Januari 2024",
+    avatar: "👩‍⚕️",
   };
 
+  const quickStats = [
+    {
+      label: "Hari Aktif",
+      value: "23",
+      emoji: "🔥",
+      color: "from-relaxed-orange/30 to-relaxed-orange/10",
+    },
+    {
+      label: "Streak Terbaik",
+      value: "12",
+      emoji: "⭐",
+      color: "from-relaxed-blue/30 to-relaxed-blue/10",
+    },
+    {
+      label: "Obat Favorit",
+      value: "3",
+      emoji: "💊",
+      color: "from-relaxed-green/30 to-relaxed-green/10",
+    },
+  ];
+
+  const menuItems = [
+    {
+      icon: Shield,
+      title: "Keamanan & Privasi",
+      desc: "Kelola keamanan akun Anda",
+      color: "text-blue-600",
+      bgColor: "bg-relaxed-blue/20",
+    },
+    {
+      icon: HelpCircle,
+      title: "Bantuan & Dukungan",
+      desc: "FAQ dan hubungi tim support",
+      color: "text-green-600",
+      bgColor: "bg-relaxed-green/20",
+    },
+    {
+      icon: Star,
+      title: "Beri Rating",
+      desc: "Bagikan pengalaman Anda",
+      color: "text-orange-600",
+      bgColor: "bg-relaxed-orange/20",
+    },
+  ];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-pillmate-light via-relaxed-pink/20 to-relaxed-blue/20">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-10 w-32 h-32 bg-relaxed-green/20 rounded-full blur-2xl animate-float"></div>
+        <div
+          className="absolute bottom-40 left-5 w-28 h-28 bg-relaxed-orange/30 rounded-full blur-xl animate-float"
+          style={{ animationDelay: "2s" }}
+        ></div>
+      </div>
+
       {/* Header */}
-      <header className="pillmate-gradient text-white p-6 rounded-b-3xl shadow-pillmate-lg">
+      <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold">Profil</h1>
-            <p className="text-white/90">Kelola informasi pribadi Anda</p>
+            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              👤 Profil Saya
+            </h1>
+            <p className="text-pillmate-primary/80 font-medium">
+              Kelola informasi pribadi dengan mudah 🌟
+            </p>
           </div>
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/20"
+            className="text-pillmate-primary hover:bg-white/30 rounded-2xl p-3 transition-all duration-300"
           >
             <Edit className="h-6 w-6" />
           </Button>
         </div>
       </header>
 
-      <div className="p-6">
+      <div className="p-6 relative z-10">
         {/* Profile Info */}
-        <div className="pillmate-card p-6 mb-6">
+        <div className="pillmate-card-relaxed p-6 mb-6 bg-gradient-to-br from-white/80 to-relaxed-pink/10 slide-up">
           <div className="flex items-center space-x-4 mb-6">
-            <div className="w-20 h-20 bg-pillmate-light rounded-full flex items-center justify-center text-4xl">
-              👤
+            <div className="relative">
+              <div className="w-20 h-20 bg-gradient-to-br from-pillmate-secondary to-pillmate-primary rounded-3xl flex items-center justify-center text-4xl shadow-lg">
+                {profileData.avatar}
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-2 border-white flex items-center justify-center">
+                <Smile className="h-3 w-3 text-white" />
+              </div>
             </div>
             <div className="flex-1">
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                 {profileData.name}
+                <span className="text-lg">✨</span>
               </h2>
-              <p className="text-gray-600">{profileData.email}</p>
-              <p className="text-sm text-gray-500">
+              <p className="text-gray-600 flex items-center gap-1">
+                <Heart className="h-4 w-4 text-red-400" />
+                {profileData.email}
+              </p>
+              <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                <Calendar className="h-4 w-4" />
                 Bergabung sejak {profileData.joinDate}
               </p>
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Mail className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">Email</p>
+                <p className="text-sm text-gray-500">📧 Email</p>
                 <p className="font-medium text-gray-900">{profileData.email}</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Phone className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">Nomor Telepon</p>
+                <p className="text-sm text-gray-500">📱 Nomor Telepon</p>
                 <p className="font-medium text-gray-900">{profileData.phone}</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Calendar className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">Tanggal Lahir</p>
+                <p className="text-sm text-gray-500">🎂 Tanggal Lahir</p>
                 <p className="font-medium text-gray-900">
                   {profileData.birthDate}
                 </p>
@@ -101,23 +174,45 @@ export default function Profile() {
             </div>
           </div>
 
-          <Button className="w-full mt-6 pillmate-button">
+          <Button className="w-full mt-6 pillmate-button py-4 text-lg">
             <Plus className="h-5 w-5 mr-2" />
-            Edit Profil
+            ✏️ Edit Profil
           </Button>
         </div>
 
+        {/* Quick Stats */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          {quickStats.map((stat, index) => (
+            <div
+              key={index}
+              className={`pillmate-card-relaxed p-4 text-center bg-gradient-to-br ${stat.color} slide-up`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-2xl mb-1">{stat.emoji}</div>
+              <div className="text-2xl font-bold text-gray-800 mb-1">
+                {stat.value}
+              </div>
+              <p className="text-xs text-gray-600 font-medium">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
         {/* Notification Settings */}
-        <div className="pillmate-card p-6 mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Bell className="h-6 w-6 text-pillmate-primary mr-2" />
-            Pengaturan Notifikasi
+        <div
+          className="pillmate-card-relaxed p-6 mb-6 bg-gradient-to-br from-relaxed-blue/10 to-white/80 slide-up"
+          style={{ animationDelay: "0.3s" }}
+        >
+          <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <Bell className="h-6 w-6 text-pillmate-primary" />
+            🔔 Pengaturan Notifikasi
           </h3>
 
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-medium text-gray-900">Pengingat Obat</p>
+                <p className="font-semibold text-gray-900 flex items-center gap-1">
+                  💊 Pengingat Obat
+                </p>
                 <p className="text-sm text-gray-600">
                   Notifikasi saat waktunya minum obat
                 </p>
@@ -128,9 +223,11 @@ export default function Profile() {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-medium text-gray-900">Pengingat Jadwal</p>
+                <p className="font-semibold text-gray-900 flex items-center gap-1">
+                  ⏰ Pengingat Jadwal
+                </p>
                 <p className="text-sm text-gray-600">
                   Pengingat untuk mengatur jadwal baru
                 </p>
@@ -141,9 +238,11 @@ export default function Profile() {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-medium text-gray-900">Laporan Mingguan</p>
+                <p className="font-semibold text-gray-900 flex items-center gap-1">
+                  📊 Laporan Mingguan
+                </p>
                 <p className="text-sm text-gray-600">
                   Ringkasan progres konsumsi obat
                 </p>
@@ -156,64 +255,76 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="pillmate-card p-4 text-center">
-            <div className="text-2xl font-bold text-pillmate-primary mb-1">
-              89%
+        {/* Achievement Badge */}
+        <div
+          className="pillmate-card-relaxed p-6 mb-6 text-center bg-gradient-to-r from-relaxed-green/20 to-relaxed-blue/20 slide-up"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <div className="text-4xl mb-3">🏆</div>
+          <h4 className="text-lg font-bold text-gray-900 mb-2">
+            Health Champion!
+          </h4>
+          <p className="text-sm text-gray-600 mb-4">
+            Anda memiliki tingkat kepatuhan 89% - Luar biasa! 🎉
+          </p>
+          <div className="grid grid-cols-2 gap-4 text-center">
+            <div>
+              <div className="text-xl font-bold text-pillmate-success">23</div>
+              <p className="text-xs text-gray-600">Hari Berturut-turut</p>
             </div>
-            <p className="text-sm text-gray-600">Tingkat Kepatuhan</p>
-          </div>
-          <div className="pillmate-card p-4 text-center">
-            <div className="text-2xl font-bold text-pillmate-success mb-1">
-              23
+            <div>
+              <div className="text-xl font-bold text-pillmate-primary">89%</div>
+              <p className="text-xs text-gray-600">Tingkat Kepatuhan</p>
             </div>
-            <p className="text-sm text-gray-600">Hari Berturut-turut</p>
           </div>
         </div>
 
         {/* Menu Options */}
-        <div className="space-y-3 mb-6">
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-left p-4 h-auto hover:bg-pillmate-light"
-          >
-            <Shield className="h-6 w-6 text-pillmate-primary mr-4" />
-            <div>
-              <p className="font-medium text-gray-900">Keamanan & Privasi</p>
-              <p className="text-sm text-gray-600">Kelola keamanan akun Anda</p>
-            </div>
-          </Button>
-
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-left p-4 h-auto hover:bg-pillmate-light"
-          >
-            <HelpCircle className="h-6 w-6 text-pillmate-primary mr-4" />
-            <div>
-              <p className="font-medium text-gray-900">Bantuan & Dukungan</p>
-              <p className="text-sm text-gray-600">
-                FAQ dan hubungi tim support
-              </p>
-            </div>
-          </Button>
+        <div className="space-y-3 mb-8">
+          {menuItems.map((item, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className={`w-full justify-start text-left p-6 h-auto hover:bg-white/60 rounded-2xl transition-all duration-300 slide-up border border-white/30`}
+              style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+            >
+              <div className={`p-3 ${item.bgColor} rounded-2xl mr-4`}>
+                <item.icon className={`h-6 w-6 ${item.color}`} />
+              </div>
+              <div className="flex-1">
+                <p className="font-semibold text-gray-900">{item.title}</p>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            </Button>
+          ))}
         </div>
 
         {/* Logout Button */}
         <Button
           variant="outline"
-          className="w-full border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
+          className="w-full border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 rounded-2xl py-4 transition-all duration-300 slide-up"
+          style={{ animationDelay: "0.8s" }}
         >
           <LogOut className="h-5 w-5 mr-2" />
-          Keluar
+          🚪 Keluar dari PillMate
         </Button>
 
         {/* App Info */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500 mb-2">PillMate v1.0.0</p>
-          <p className="text-xs text-gray-400">
-            © 2024 PillMate. Semua hak cipta dilindungi.
-          </p>
+        <div
+          className="mt-8 text-center slide-up"
+          style={{ animationDelay: "0.9s" }}
+        >
+          <div className="pillmate-card-relaxed p-6 bg-gradient-to-r from-relaxed-pink/10 to-relaxed-blue/10">
+            <p className="text-sm text-gray-500 mb-2 font-medium">
+              PillMate v1.0.0 🚀
+            </p>
+            <p className="text-xs text-gray-400">
+              © 2024 PillMate. Dibuat dengan ❤️ untuk kesehatan Anda
+            </p>
+            <p className="text-xs text-pillmate-primary mt-2 font-medium">
+              Terima kasih telah mempercayai kami! 🙏
+            </p>
+          </div>
         </div>
       </div>
     </div>

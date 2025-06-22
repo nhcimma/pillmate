@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Eye, EyeOff, Pill } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PillMateLogo } from "@/components/ui/pillmate-logo";
 
 interface LoginProps {
   onLogin: () => void;
@@ -30,24 +31,39 @@ export default function Login({ onLogin }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-pillmate-primary rounded-2xl mb-4">
-            <Pill className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">PillMate</h1>
-          <p className="text-gray-600">Pengingat Konsumsi Obat Digital</p>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pillmate-light via-relaxed-pink to-relaxed-blue">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-pillmate-secondary/30 rounded-full blur-xl animate-float"></div>
+        <div
+          className="absolute top-40 right-20 w-32 h-32 bg-relaxed-blue/40 rounded-full blur-2xl animate-float"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-20 left-1/3 w-24 h-24 bg-relaxed-pink/30 rounded-full blur-xl animate-float"
+          style={{ animationDelay: "4s" }}
+        ></div>
+      </div>
+
+      <div className="w-full max-w-md relative z-10">
+        <div className="text-center mb-8 slide-up">
+          <PillMateLogo size="xl" className="justify-center mb-4" />
+          <p className="text-pillmate-primary/80 text-lg font-medium">
+            Sahabat Kesehatan Digital Anda ✨
+          </p>
         </div>
 
-        <div className="pillmate-card p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div
+          className="pillmate-card-relaxed p-8 slide-up"
+          style={{ animationDelay: "0.2s" }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-3"
               >
-                Email
+                📧 Email
               </label>
               <Input
                 id="email"
@@ -64,9 +80,9 @@ export default function Login({ onLogin }: LoginProps) {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-3"
               >
-                Kata Sandi
+                🔐 Kata Sandi
               </label>
               <div className="relative">
                 <Input
@@ -82,39 +98,45 @@ export default function Login({ onLogin }: LoginProps) {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-pillmate-primary"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-pillmate-primary hover:text-pillmate-accent transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
             </div>
 
-            <Button type="submit" className="w-full pillmate-button">
-              Masuk
+            <Button
+              type="submit"
+              className="w-full pillmate-button text-lg py-4"
+            >
+              🚀 Masuk ke PillMate
             </Button>
           </form>
 
-          <div className="mt-6 text-center space-y-3">
+          <div className="mt-8 text-center space-y-4">
             <a
               href="#"
-              className="text-pillmate-primary hover:text-pillmate-accent text-sm font-medium"
+              className="text-pillmate-primary hover:text-pillmate-accent text-sm font-medium transition-colors"
             >
-              Lupa Kata Sandi?
+              🤔 Lupa Kata Sandi?
             </a>
 
             <div className="text-sm text-gray-600">
-              Belum punya akun?{" "}
+              Belum bergabung dengan kami?{" "}
               <a
                 href="#"
-                className="text-pillmate-primary hover:text-pillmate-accent font-medium"
+                className="text-pillmate-primary hover:text-pillmate-accent font-medium transition-colors"
               >
-                Daftar Sekarang
+                Daftar Yuk! 🎉
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 text-center">
+        <div
+          className="mt-8 text-center slide-up"
+          style={{ animationDelay: "0.4s" }}
+        >
           <p className="text-xs text-gray-500">
             Dengan masuk, Anda menyetujui{" "}
             <a href="#" className="text-pillmate-primary hover:underline">

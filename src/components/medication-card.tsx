@@ -35,55 +35,75 @@ export function MedicationCard({
   const getStatusColor = () => {
     switch (medication.status) {
       case "completed":
-        return "border-pillmate-success bg-green-50";
+        return "border-l-pillmate-success bg-gradient-to-r from-green-50/80 to-white/90";
       case "missed":
-        return "border-pillmate-error bg-red-50";
+        return "border-l-pillmate-error bg-gradient-to-r from-red-50/80 to-white/90";
       default:
-        return "border-pillmate-warning bg-orange-50";
+        return "border-l-pillmate-warning bg-gradient-to-r from-orange-50/80 to-white/90";
     }
   };
 
   const getStatusText = () => {
     switch (medication.status) {
       case "completed":
-        return "Sudah diminum";
+        return "✅ Sudah diminum";
       case "missed":
-        return "Terlewat";
+        return "⏰ Terlewat";
       default:
-        return "Belum diminum";
+        return "🔔 Belum diminum";
+    }
+  };
+
+  const getStatusEmoji = () => {
+    switch (medication.status) {
+      case "completed":
+        return "🎉";
+      case "missed":
+        return "😔";
+      default:
+        return "💊";
     }
   };
 
   return (
     <div
       className={cn(
-        "pillmate-card p-4 border-l-4 transition-all duration-200",
+        "pillmate-card-relaxed p-5 border-l-4 transition-all duration-300 hover:shadow-soft-lg transform hover:scale-[1.02] backdrop-blur-sm",
         getStatusColor(),
       )}
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-white rounded-full shadow-sm">
-            <Pill className="h-5 w-5 text-pillmate-primary" />
+        <div className="flex items-center space-x-4">
+          <div className="p-3 bg-white/70 rounded-2xl shadow-sm backdrop-blur-sm">
+            <Pill className="h-6 w-6 text-pillmate-primary" />
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-gray-900">{medication.name}</h3>
-            <p className="text-sm text-gray-600">{medication.dosage}</p>
+            <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+              {medication.name}
+              <span className="text-sm">{getStatusEmoji()}</span>
+            </h3>
+            <p className="text-sm text-gray-600 font-medium">
+              {medication.dosage}
+            </p>
             {medication.instruction && (
-              <p className="text-xs text-gray-500 mt-1">
-                {medication.instruction}
+              <p className="text-xs text-gray-500 mt-1 bg-white/50 px-2 py-1 rounded-full inline-block">
+                💡 {medication.instruction}
               </p>
             )}
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-4">
           <div className="text-right">
-            <p className="font-medium text-gray-900">{medication.time}</p>
-            <div className="flex items-center space-x-1 mt-1">
+            <p className="font-bold text-gray-900 text-lg flex items-center gap-1">
+              ⏰ {medication.time}
+            </p>
+            <div className="flex items-center space-x-2 mt-1">
               {getStatusIcon()}
-              <span className="text-xs text-gray-600">{getStatusText()}</span>
+              <span className="text-xs text-gray-600 font-medium">
+                {getStatusText()}
+              </span>
             </div>
           </div>
 
@@ -91,17 +111,17 @@ export function MedicationCard({
             <div className="flex space-x-2">
               <button
                 onClick={() => onStatusChange(medication.id, "missed")}
-                className="p-2 text-pillmate-error hover:bg-red-100 rounded-full transition-colors"
+                className="p-3 text-pillmate-error hover:bg-red-100/70 rounded-2xl transition-all duration-300 transform hover:scale-110 backdrop-blur-sm"
                 title="Tandai terlewat"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
               <button
                 onClick={() => onStatusChange(medication.id, "completed")}
-                className="p-2 text-pillmate-success hover:bg-green-100 rounded-full transition-colors"
+                className="p-3 text-pillmate-success hover:bg-green-100/70 rounded-2xl transition-all duration-300 transform hover:scale-110 backdrop-blur-sm"
                 title="Tandai selesai"
               >
-                <Check className="h-4 w-4" />
+                <Check className="h-5 w-5" />
               </button>
             </div>
           )}
