@@ -143,14 +143,12 @@ export default function Schedule() {
       {/* Header */}
       <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Jadwal Obat</h1>
-            <p className="text-pillmate-primary/80 font-medium">
-              Kelola jadwal konsumsi obat dengan mudah
-            </p>
-          </div>
+          <div className="text-2xl text-gray-900">Jadwal Obat</div>
           <CalendarIcon className="h-8 w-8 text-pillmate-primary/80 animate-pulse-gentle" />
         </div>
+        <p className="text-pillmate-primary/80 font-medium">
+          Kelola jadwal konsumsi obat dengan mudah
+        </p>
       </header>
 
       <div className="p-6 relative z-10">
