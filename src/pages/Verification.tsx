@@ -1,174 +1,142 @@
-import {
-  ArrowLeft,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  Settings,
-  Users,
-  Database,
-  Smartphone,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Verification() {
   const [activeTab, setActiveTab] = useState("process");
 
-  const processChecks = [
+  const developmentSteps = [
     {
-      phase: "Analisis Kebutuhan",
+      step: "Perencanaan",
       status: "completed",
-      items: [
-        { check: "Identifikasi stakeholder", status: "completed" },
-        { check: "Analisis kebutuhan fungsional", status: "completed" },
-        { check: "Analisis kebutuhan non-fungsional", status: "completed" },
-        { check: "Dokumentasi requirement", status: "completed" },
+      description: "Menentukan fitur apa saja yang dibutuhkan",
+      details: [
+        "Analisis kebutuhan pengguna",
+        "Membuat daftar fitur aplikasi",
+        "Menentukan target pengguna",
       ],
     },
     {
-      phase: "Desain Sistem",
+      step: "Desain",
       status: "completed",
-      items: [
-        { check: "Pembuatan ERD", status: "completed" },
-        { check: "Pembuatan DFD", status: "completed" },
-        { check: "Desain arsitektur sistem", status: "completed" },
-        { check: "Desain UI/UX", status: "completed" },
+      description: "Membuat rancangan aplikasi",
+      details: [
+        "Desain tampilan aplikasi",
+        "Membuat struktur database",
+        "Menggambar alur kerja sistem",
       ],
     },
     {
-      phase: "Implementasi",
+      step: "Pembuatan",
       status: "in-progress",
-      items: [
-        { check: "Setup environment pengembangan", status: "completed" },
-        { check: "Implementasi database", status: "completed" },
-        { check: "Implementasi backend API", status: "in-progress" },
-        { check: "Implementasi frontend", status: "in-progress" },
+      description: "Menulis kode program",
+      details: [
+        "Membuat tampilan aplikasi",
+        "Membuat fitur login dan register",
+        "Membuat fitur jadwal obat",
+        "Membuat sistem notifikasi",
       ],
     },
     {
-      phase: "Testing",
+      step: "Pengujian",
       status: "pending",
-      items: [
-        { check: "Unit testing", status: "pending" },
-        { check: "Integration testing", status: "pending" },
-        { check: "User acceptance testing", status: "pending" },
-        { check: "Performance testing", status: "pending" },
+      description: "Memastikan aplikasi bekerja dengan baik",
+      details: [
+        "Tes semua fitur aplikasi",
+        "Tes di berbagai perangkat",
+        "Perbaiki bug yang ditemukan",
       ],
     },
     {
-      phase: "Deployment",
+      step: "Peluncuran",
       status: "pending",
-      items: [
-        { check: "Setup production environment", status: "pending" },
-        { check: "Database migration", status: "pending" },
-        { check: "Application deployment", status: "pending" },
-        { check: "Monitoring setup", status: "pending" },
+      description: "Merilis aplikasi ke publik",
+      details: [
+        "Upload ke Google Play Store",
+        "Siapkan dokumentasi pengguna",
+        "Monitoring performa aplikasi",
       ],
     },
   ];
 
-  const functionalTests = [
+  const featureTests = [
     {
-      category: "Autentikasi",
-      icon: Users,
+      category: "Login & Register",
       tests: [
         {
-          function: "Login pengguna",
+          name: "Masuk dengan email",
           status: "passed",
-          description: "Pengguna dapat login dengan email dan password",
+          description: "Pengguna bisa login pakai email dan password",
         },
         {
-          function: "Registrasi pengguna",
+          name: "Daftar akun baru",
           status: "passed",
-          description: "Pengguna dapat membuat akun baru",
+          description: "Pengguna bisa membuat akun baru",
         },
         {
-          function: "Lupa password",
+          name: "Lupa password",
           status: "in-progress",
-          description: "Fitur reset password melalui email",
-        },
-        {
-          function: "Logout",
-          status: "passed",
-          description: "Pengguna dapat keluar dari aplikasi",
+          description: "Reset password lewat email",
         },
       ],
     },
     {
-      category: "Manajemen Jadwal",
-      icon: Settings,
+      category: "Kelola Jadwal Obat",
       tests: [
         {
-          function: "Tambah jadwal obat",
+          name: "Tambah jadwal baru",
           status: "passed",
-          description: "Pengguna dapat menambah jadwal obat baru",
+          description: "Bisa menambah jadwal obat dengan mudah",
         },
         {
-          function: "Edit jadwal obat",
+          name: "Edit jadwal",
           status: "in-progress",
-          description: "Pengguna dapat mengubah jadwal yang ada",
+          description: "Mengubah jadwal yang sudah ada",
         },
         {
-          function: "Hapus jadwal obat",
+          name: "Hapus jadwal",
           status: "passed",
-          description: "Pengguna dapat menghapus jadwal",
-        },
-        {
-          function: "Atur waktu pengingat",
-          status: "passed",
-          description: "Sistem dapat mengatur waktu notifikasi",
+          description: "Menghapus jadwal yang tidak perlu",
         },
       ],
     },
     {
-      category: "Sistem Notifikasi",
-      icon: Smartphone,
+      category: "Pengingat",
       tests: [
         {
-          function: "Push notification",
+          name: "Notifikasi tepat waktu",
           status: "passed",
-          description: "Sistem mengirim notifikasi tepat waktu",
+          description: "Aplikasi mengirim pengingat sesuai jadwal",
         },
         {
-          function: "Snooze notification",
+          name: "Tunda pengingat",
           status: "passed",
-          description: "Pengguna dapat menunda notifikasi",
+          description: "Bisa menunda notifikasi 10 menit",
         },
         {
-          function: "Konfirmasi konsumsi",
+          name: "Konfirmasi minum obat",
           status: "passed",
-          description: "Pengguna dapat konfirmasi minum obat",
-        },
-        {
-          function: "Notifikasi terlewat",
-          status: "in-progress",
-          description: "Sistem mendeteksi obat yang terlewat",
+          description: "Bisa konfirmasi sudah minum obat",
         },
       ],
     },
     {
-      category: "Tracking & Laporan",
-      icon: Database,
+      category: "Riwayat & Laporan",
       tests: [
         {
-          function: "Catat konsumsi obat",
+          name: "Catat riwayat",
           status: "passed",
-          description: "Sistem mencatat riwayat konsumsi",
+          description: "Sistem mencatat kapan obat diminum",
         },
         {
-          function: "Tampil riwayat",
+          name: "Lihat riwayat",
           status: "passed",
-          description: "Pengguna dapat melihat riwayat konsumsi",
+          description: "Pengguna bisa melihat riwayat konsumsi",
         },
         {
-          function: "Statistik kepatuhan",
+          name: "Statistik kepatuhan",
           status: "passed",
-          description: "Sistem menghitung tingkat kepatuhan",
-        },
-        {
-          function: "Export laporan",
-          status: "pending",
-          description: "Pengguna dapat mengunduh laporan",
+          description: "Menampilkan persentase kepatuhan minum obat",
         },
       ],
     },
@@ -193,15 +161,15 @@ export default function Verification() {
       case "passed":
         return "Berhasil";
       case "in-progress":
-        return "Dalam Proses";
+        return "Sedang Dikerjakan";
       case "pending":
-        return "Menunggu";
+        return "Belum Mulai";
       default:
         return "Belum Dimulai";
     }
   };
 
-  const getStatusBg = (status: string) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
       case "passed":
@@ -227,16 +195,18 @@ export default function Verification() {
             </Link>
             <div>
               <h1 className="text-2xl font-bold text-purple-900">
-                Verifikasi & Validasi
+                Pengecekan Aplikasi PillMate
               </h1>
-              <p className="text-purple-700">Pengujian Sistem PillMate</p>
+              <p className="text-purple-700">
+                Memastikan Semua Berjalan dengan Baik
+              </p>
             </div>
           </div>
           <CheckCircle className="h-8 w-8 text-purple-600" />
         </div>
       </header>
 
-      <div className="p-6">
+      <div className="p-6 max-w-4xl mx-auto">
         {/* Tab Navigation */}
         <div className="flex space-x-3 mb-6">
           <button
@@ -247,7 +217,7 @@ export default function Verification() {
                 : "bg-white text-purple-700 hover:bg-purple-50 border border-purple-200"
             }`}
           >
-            Proses Pengembangan
+            Tahap Pembuatan
           </button>
           <button
             onClick={() => setActiveTab("functions")}
@@ -257,7 +227,7 @@ export default function Verification() {
                 : "bg-white text-purple-700 hover:bg-purple-50 border border-purple-200"
             }`}
           >
-            Fungsi Aplikasi
+            Tes Fitur Aplikasi
           </button>
         </div>
 
@@ -265,49 +235,45 @@ export default function Verification() {
           // Process Verification
           <div className="space-y-6">
             <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
-              <h3 className="text-lg font-semibold text-purple-900 mb-4">
-                Verifikasi Proses Pengembangan Software
+              <h3 className="text-lg font-bold text-purple-900 mb-4">
+                Tahap-Tahap Pembuatan Aplikasi
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Pemeriksaan tahapan dalam pengembangan aplikasi PillMate untuk
-                memastikan setiap fase telah dilakukan dengan benar sesuai
-                metodologi pengembangan software.
+                Seperti membangun rumah, pembuatan aplikasi juga ada tahapannya.
+                Berikut progress pembuatan PillMate:
               </p>
 
               <div className="space-y-4">
-                {processChecks.map((phase, index) => (
+                {developmentSteps.map((step, index) => (
                   <div
                     key={index}
                     className="border border-purple-100 rounded-xl p-5"
                   >
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-lg font-semibold text-purple-900">
-                        {index + 1}. {phase.phase}
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-lg font-bold text-purple-900">
+                        {index + 1}. {step.step}
                       </h4>
                       <div className="flex items-center space-x-3">
-                        {getStatusIcon(phase.status)}
+                        {getStatusIcon(step.status)}
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusBg(phase.status)}`}
+                          className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(step.status)}`}
                         >
-                          {getStatusText(phase.status)}
+                          {getStatusText(step.status)}
                         </span>
                       </div>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {phase.items.map((item, itemIndex) => (
-                        <div
-                          key={itemIndex}
-                          className="flex items-center justify-between p-3 bg-purple-50 rounded-lg"
-                        >
-                          <span className="text-gray-700 text-sm">
-                            {item.check}
-                          </span>
-                          <div className="flex items-center space-x-2">
-                            {getStatusIcon(item.status)}
-                          </div>
-                        </div>
-                      ))}
+                    <p className="text-gray-600 mb-3">{step.description}</p>
+                    <div className="bg-purple-50 p-3 rounded-lg">
+                      <div className="text-sm text-purple-800">
+                        <strong>Yang dikerjakan:</strong>
+                        <ul className="mt-2 space-y-1">
+                          {step.details.map((detail, i) => (
+                            <li key={i} className="ml-4">
+                              • {detail}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -316,7 +282,7 @@ export default function Verification() {
 
             {/* Summary */}
             <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
-              <h3 className="text-lg font-semibold text-purple-900 mb-4">
+              <h3 className="text-lg font-bold text-purple-900 mb-4">
                 Ringkasan Progress
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -324,23 +290,23 @@ export default function Verification() {
                   <div className="text-2xl font-bold text-green-600 mb-1">
                     2
                   </div>
-                  <p className="text-sm text-green-800">Fase Selesai</p>
+                  <p className="text-sm text-green-800">Tahap Selesai</p>
                 </div>
                 <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-200">
                   <div className="text-2xl font-bold text-orange-600 mb-1">
                     1
                   </div>
-                  <p className="text-sm text-orange-800">Dalam Proses</p>
+                  <p className="text-sm text-orange-800">Sedang Dikerjakan</p>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="text-2xl font-bold text-gray-600 mb-1">2</div>
-                  <p className="text-sm text-gray-700">Menunggu</p>
+                  <p className="text-sm text-gray-700">Belum Mulai</p>
                 </div>
                 <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-200">
                   <div className="text-2xl font-bold text-purple-600 mb-1">
                     60%
                   </div>
-                  <p className="text-sm text-purple-800">Progress Total</p>
+                  <p className="text-sm text-purple-800">Total Progress</p>
                 </div>
               </div>
             </div>
@@ -349,18 +315,16 @@ export default function Verification() {
           // Function Validation
           <div className="space-y-6">
             <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
-              <h3 className="text-lg font-semibold text-purple-900 mb-4">
-                Validasi Fungsi Aplikasi
+              <h3 className="text-lg font-bold text-purple-900 mb-4">
+                Tes Fitur-Fitur Aplikasi
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Pengujian setiap fungsi aplikasi PillMate untuk memastikan
-                bekerja sesuai dengan kebutuhan pengguna dan spesifikasi yang
-                telah ditetapkan.
+                Seperti mengecek semua tombol di remote TV, kita perlu
+                memastikan semua fitur aplikasi berfungsi dengan baik:
               </p>
 
               <div className="space-y-6">
-                {functionalTests.map((category, index) => {
-                  const Icon = category.icon;
+                {featureTests.map((category, index) => {
                   const passedTests = category.tests.filter(
                     (test) => test.status === "passed",
                   ).length;
@@ -372,14 +336,9 @@ export default function Verification() {
                       className="border border-purple-100 rounded-xl p-5"
                     >
                       <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-3">
-                          <div className="p-3 bg-purple-100 rounded-xl">
-                            <Icon className="h-6 w-6 text-purple-600" />
-                          </div>
-                          <h4 className="text-lg font-semibold text-purple-900">
-                            {category.category}
-                          </h4>
-                        </div>
+                        <h4 className="text-lg font-bold text-purple-900">
+                          {category.category}
+                        </h4>
                         <div className="text-sm text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
                           {passedTests}/{totalTests} berhasil
                         </div>
@@ -396,10 +355,10 @@ export default function Verification() {
                                 <div className="flex items-center space-x-3 mb-2">
                                   {getStatusIcon(test.status)}
                                   <span className="font-medium text-purple-900">
-                                    {test.function}
+                                    {test.name}
                                   </span>
                                   <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusBg(test.status)}`}
+                                    className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(test.status)}`}
                                   >
                                     {getStatusText(test.status)}
                                   </span>
@@ -420,71 +379,69 @@ export default function Verification() {
 
             {/* Test Summary */}
             <div className="bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
-              <h3 className="text-lg font-semibold text-purple-900 mb-4">
+              <h3 className="text-lg font-bold text-purple-900 mb-4">
                 Ringkasan Pengujian
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
                   <div className="text-2xl font-bold text-green-600 mb-1">
-                    12
+                    9
                   </div>
-                  <p className="text-sm text-green-800">Test Berhasil</p>
+                  <p className="text-sm text-green-800">Fitur Berhasil</p>
                 </div>
                 <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-200">
                   <div className="text-2xl font-bold text-orange-600 mb-1">
-                    3
+                    2
                   </div>
-                  <p className="text-sm text-orange-800">Dalam Proses</p>
+                  <p className="text-sm text-orange-800">Masih Dikerjakan</p>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <div className="text-2xl font-bold text-gray-600 mb-1">1</div>
-                  <p className="text-sm text-gray-700">Menunggu</p>
+                  <div className="text-2xl font-bold text-gray-600 mb-1">0</div>
+                  <p className="text-sm text-gray-700">Belum Ditest</p>
                 </div>
                 <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-200">
                   <div className="text-2xl font-bold text-purple-600 mb-1">
-                    75%
+                    82%
                   </div>
-                  <p className="text-sm text-purple-800">Success Rate</p>
+                  <p className="text-sm text-purple-800">
+                    Tingkat Keberhasilan
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Conclusion */}
+        {/* Kesimpulan */}
         <div className="mt-8 bg-white rounded-2xl shadow-lg border border-purple-100 p-6">
-          <h3 className="text-lg font-semibold text-purple-900 mb-4">
-            Kesimpulan Verifikasi & Validasi
-          </h3>
-          <div className="space-y-4 text-gray-700 leading-relaxed">
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 className="font-semibold text-purple-800 mb-2">
-                Verifikasi Proses
+          <h3 className="text-lg font-bold text-purple-900 mb-4">Kesimpulan</h3>
+          <div className="space-y-4">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <h4 className="font-bold text-blue-800 mb-2">
+                Tahap Pembuatan (60% selesai)
               </h4>
-              <p className="text-sm">
-                Tahapan pengembangan software telah mengikuti metodologi yang
-                benar dengan 60% progress completion. Fase analisis dan desain
-                telah selesai dengan baik.
+              <p className="text-sm text-blue-700">
+                Perencanaan dan desain sudah selesai. Saat ini sedang dalam
+                tahap pembuatan kode program. Sudah lumayan maju!
+              </p>
+            </div>
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+              <h4 className="font-bold text-green-800 mb-2">
+                Tes Fitur (82% berhasil)
+              </h4>
+              <p className="text-sm text-green-700">
+                Sebagian besar fitur utama sudah berfungsi dengan baik. Fitur
+                login, jadwal obat, dan pengingat sudah bekerja normal.
               </p>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 className="font-semibold text-purple-800 mb-2">
-                Validasi Fungsi
+              <h4 className="font-bold text-purple-800 mb-2">
+                Status Aplikasi
               </h4>
-              <p className="text-sm">
-                Sebagian besar fungsi aplikasi (75%) telah bekerja dengan baik
-                dan sesuai kebutuhan. Fungsi inti seperti autentikasi, manajemen
-                jadwal, dan notifikasi sudah berfungsi optimal.
-              </p>
-            </div>
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <h4 className="font-semibold text-purple-800 mb-2">
-                Rekomendasi
-              </h4>
-              <p className="text-sm">
-                Aplikasi PillMate siap untuk tahap testing lanjutan dan dapat
-                dilanjutkan ke fase deployment dengan perbaikan minor pada
-                fungsi yang masih dalam pengembangan.
+              <p className="text-sm text-purple-700">
+                Aplikasi PillMate sudah siap digunakan untuk kebutuhan dasar.
+                Beberapa fitur tambahan masih dalam pengembangan untuk
+                menyempurnakan pengalaman pengguna.
               </p>
             </div>
           </div>
