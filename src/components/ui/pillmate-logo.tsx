@@ -22,36 +22,82 @@ export function PillMateLogo({
 
   return (
     <div className={cn("flex items-center space-x-3", className)}>
-      {/* Logo Icon - Simple and Clean */}
+      {/* Cool Modern Pill Logo */}
       <div
         className={cn(
-          "relative rounded-3xl bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center transform hover:scale-105 transition-all duration-300 shadow-md",
+          "relative rounded-3xl bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 flex items-center justify-center transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl",
           config.container,
         )}
       >
-        {/* Simple Pill Icon */}
+        {/* Modern Pill Design */}
         <svg
-          viewBox="0 0 24 24"
+          viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={cn("text-purple-700", config.icon)}
+          className={cn("text-white", config.icon)}
         >
-          {/* Main pill shape - simplified */}
-          <rect
-            x="6"
-            y="8"
-            width="12"
-            height="8"
-            rx="4"
-            fill="currentColor"
-            fillOpacity="0.8"
+          {/* Main pill capsule */}
+          <path
+            d="M8 12C8 9.79086 9.79086 8 12 8H20C22.2091 8 24 9.79086 24 12V20C24 22.2091 22.2091 24 20 24H12C9.79086 24 8 22.2091 8 20V12Z"
+            fill="white"
+            fillOpacity="0.9"
           />
-          {/* Center divider */}
-          <line x1="12" y1="8" x2="12" y2="16" stroke="white" strokeWidth="1" />
-          {/* Small dot indicators */}
-          <circle cx="9" cy="12" r="1" fill="white" fillOpacity="0.9" />
-          <circle cx="15" cy="12" r="1" fill="white" fillOpacity="0.9" />
+
+          {/* Pill divider line */}
+          <line
+            x1="16"
+            y1="8"
+            x2="16"
+            y2="24"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeOpacity="0.7"
+          />
+
+          {/* Left side pattern */}
+          <circle
+            cx="12"
+            cy="14"
+            r="1.5"
+            fill="currentColor"
+            fillOpacity="0.6"
+          />
+          <circle cx="12" cy="18" r="1" fill="currentColor" fillOpacity="0.4" />
+
+          {/* Right side pattern */}
+          <circle
+            cx="20"
+            cy="14"
+            r="1.5"
+            fill="currentColor"
+            fillOpacity="0.6"
+          />
+          <circle cx="20" cy="18" r="1" fill="currentColor" fillOpacity="0.4" />
+
+          {/* Medical cross on left side */}
+          <path
+            d="M11 12H13M12 11V13"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeOpacity="0.7"
+          />
+
+          {/* Subtle highlight */}
+          <path
+            d="M10 10C10.5 9.5 11.5 9 13 9H19C20.5 9 21.5 9.5 22 10"
+            stroke="white"
+            strokeWidth="0.5"
+            strokeOpacity="0.5"
+            strokeLinecap="round"
+          />
         </svg>
+
+        {/* Glowing effect */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-transparent opacity-50"></div>
+
+        {/* Small indicator dot */}
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full shadow-sm animate-pulse"></div>
       </div>
 
       {/* Logo Text */}

@@ -32,10 +32,10 @@ export default function Profile() {
 
   const profileData = {
     name: "Hikmah",
-    email: "hikmah@example.com",
-    phone: "+62 812 3456 7890",
-    birthDate: "15 Januari 1990",
-    joinDate: "1 Januari 2024",
+    email: "hikmahhmanis.com",
+    phone: "082192297597",
+    birthDate: "10 Juli 2005",
+    joinDate: "19 Juli 2025",
     avatar: "👩‍⚕️",
   };
 
