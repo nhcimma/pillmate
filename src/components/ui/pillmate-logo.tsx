@@ -22,47 +22,36 @@ export function PillMateLogo({
 
   return (
     <div className={cn("flex items-center space-x-3", className)}>
-      {/* Logo Icon */}
+      {/* Logo Icon - Simple and Clean */}
       <div
         className={cn(
-          "relative rounded-2xl pillmate-gradient flex items-center justify-center transform hover:scale-105 transition-all duration-300 shadow-lg",
+          "relative rounded-3xl bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center transform hover:scale-105 transition-all duration-300 shadow-md",
           config.container,
         )}
       >
-        {/* Pill Icon with unique design */}
+        {/* Simple Pill Icon */}
         <svg
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={cn("text-white", config.icon)}
+          className={cn("text-purple-700", config.icon)}
         >
-          {/* Main pill shape */}
-          <path
-            d="M8.5 15.5L15.5 8.5C17.433 6.567 17.433 3.433 15.5 1.5C13.567 -0.433 10.433 -0.433 8.5 1.5L1.5 8.5C-0.433 10.433 -0.433 13.567 1.5 15.5C3.433 17.433 6.567 17.433 8.5 15.5Z"
-            fill="white"
-            fillOpacity="0.9"
+          {/* Main pill shape - simplified */}
+          <rect
+            x="6"
+            y="8"
+            width="12"
+            height="8"
+            rx="4"
+            fill="currentColor"
+            fillOpacity="0.8"
           />
-          <path
-            d="M15.5 8.5L22.5 15.5C24.433 17.433 24.433 20.567 22.5 22.5C20.567 24.433 17.433 24.433 15.5 22.5L8.5 15.5C6.567 13.567 6.567 10.433 8.5 8.5C10.433 6.567 13.567 6.567 15.5 8.5Z"
-            fill="white"
-            fillOpacity="0.7"
-          />
-          {/* Center line */}
-          <path
-            d="M8.5 8.5L15.5 15.5"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          {/* Small decorative dots */}
-          <circle cx="10" cy="10" r="1" fill="white" fillOpacity="0.8" />
-          <circle cx="14" cy="14" r="1" fill="white" fillOpacity="0.8" />
+          {/* Center divider */}
+          <line x1="12" y1="8" x2="12" y2="16" stroke="white" strokeWidth="1" />
+          {/* Small dot indicators */}
+          <circle cx="9" cy="12" r="1" fill="white" fillOpacity="0.9" />
+          <circle cx="15" cy="12" r="1" fill="white" fillOpacity="0.9" />
         </svg>
-
-        {/* Floating sparkle effect */}
-        <div className="absolute -top-1 -right-1">
-          <div className="w-2 h-2 bg-white rounded-full opacity-60 animate-pulse-gentle"></div>
-        </div>
       </div>
 
       {/* Logo Text */}
@@ -71,11 +60,11 @@ export function PillMateLogo({
           <h1
             className={cn("font-bold text-gray-900 leading-none", config.text)}
           >
-            <span className="text-pillmate-primary">Pill</span>
-            <span className="text-pillmate-accent">Mate</span>
+            <span className="text-purple-600">Pill</span>
+            <span className="text-purple-500">Mate</span>
           </h1>
           {size === "lg" || size === "xl" ? (
-            <p className="text-xs text-pillmate-primary/70 font-medium mt-1">
+            <p className="text-xs text-purple-500/70 font-medium mt-1">
               Pengingat Obat Digital
             </p>
           ) : null}

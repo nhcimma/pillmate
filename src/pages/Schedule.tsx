@@ -6,7 +6,7 @@ import {
   Calendar as CalendarIcon,
   Clock,
   Users,
-  Star,
+  Edit3,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,19 @@ import { ScheduleItem, Schedule } from "@/components/schedule-item";
 export default function Schedule() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Get current date and year
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentDate = today.toISOString().split("T")[0];
+  const nextMonthDate = new Date(
+    today.getFullYear(),
+    today.getMonth() + 2,
+    today.getDate(),
+  )
+    .toISOString()
+    .split("T")[0];
+
   const [schedules, setSchedules] = useState<Schedule[]>([
     {
       id: "1",
@@ -23,8 +36,8 @@ export default function Schedule() {
       dosage: "2 tablet",
       times: ["08:00", "20:00"],
       frequency: "Setiap hari",
-      startDate: "2024-01-01",
-      endDate: "2024-03-01",
+      startDate: currentDate,
+      endDate: nextMonthDate,
       reminderEnabled: true,
       instruction: "Setelah makan",
     },
@@ -34,7 +47,7 @@ export default function Schedule() {
       dosage: "1 tablet",
       times: ["14:00"],
       frequency: "Jika diperlukan",
-      startDate: "2024-01-15",
+      startDate: currentDate,
       reminderEnabled: true,
       instruction: "Diminum saat demam atau sakit kepala",
     },
@@ -44,7 +57,7 @@ export default function Schedule() {
       dosage: "1 kapsul",
       times: ["20:00"],
       frequency: "Setiap hari",
-      startDate: "2024-01-01",
+      startDate: currentDate,
       reminderEnabled: false,
       instruction: "Sebelum tidur",
     },
@@ -103,10 +116,10 @@ export default function Schedule() {
       action: () => console.log("Add routine"),
     },
     {
-      name: "Vitamin",
-      icon: Star,
+      name: "Catatan Manual",
+      icon: Edit3,
       color: "bg-relaxed-green/50",
-      action: () => console.log("Add vitamin"),
+      action: () => console.log("Add manual note"),
     },
     {
       name: "Darurat",

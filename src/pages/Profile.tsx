@@ -4,13 +4,11 @@ import {
   Bell,
   Shield,
   HelpCircle,
-  LogOut,
   User,
   Mail,
   Phone,
   Calendar,
   Plus,
-  Star,
   Settings,
   Heart,
   Smile,
@@ -45,19 +43,16 @@ export default function Profile() {
     {
       label: "Hari Aktif",
       value: "23",
-      emoji: "🔥",
       color: "from-relaxed-orange/30 to-relaxed-orange/10",
     },
     {
       label: "Streak Terbaik",
       value: "12",
-      emoji: "⭐",
       color: "from-relaxed-blue/30 to-relaxed-blue/10",
     },
     {
       label: "Obat Favorit",
       value: "3",
-      emoji: "💊",
       color: "from-relaxed-green/30 to-relaxed-green/10",
     },
   ];
@@ -77,13 +72,6 @@ export default function Profile() {
       color: "text-green-600",
       bgColor: "bg-relaxed-green/20",
     },
-    {
-      icon: Star,
-      title: "Beri Rating",
-      desc: "Bagikan pengalaman Anda",
-      color: "text-orange-600",
-      bgColor: "bg-relaxed-orange/20",
-    },
   ];
 
   return (
@@ -101,11 +89,9 @@ export default function Profile() {
       <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              👤 Profil Saya
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">Profil Saya</h1>
             <p className="text-pillmate-primary/80 font-medium">
-              Kelola informasi pribadi dengan mudah 🌟
+              Kelola informasi pribadi dengan mudah
             </p>
           </div>
           <Button
@@ -131,9 +117,8 @@ export default function Profile() {
               </div>
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-gray-900">
                 {profileData.name}
-                <span className="text-lg">✨</span>
               </h2>
               <p className="text-gray-600 flex items-center gap-1">
                 <Heart className="h-4 w-4 text-red-400" />
@@ -150,7 +135,7 @@ export default function Profile() {
             <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Mail className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">📧 Email</p>
+                <p className="text-sm text-gray-500">Email</p>
                 <p className="font-medium text-gray-900">{profileData.email}</p>
               </div>
             </div>
@@ -158,7 +143,7 @@ export default function Profile() {
             <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Phone className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">📱 Nomor Telepon</p>
+                <p className="text-sm text-gray-500">Nomor Telepon</p>
                 <p className="font-medium text-gray-900">{profileData.phone}</p>
               </div>
             </div>
@@ -166,7 +151,7 @@ export default function Profile() {
             <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-2xl">
               <Calendar className="h-5 w-5 text-pillmate-primary" />
               <div>
-                <p className="text-sm text-gray-500">🎂 Tanggal Lahir</p>
+                <p className="text-sm text-gray-500">Tanggal Lahir</p>
                 <p className="font-medium text-gray-900">
                   {profileData.birthDate}
                 </p>
@@ -176,7 +161,7 @@ export default function Profile() {
 
           <Button className="w-full mt-6 pillmate-button py-4 text-lg">
             <Plus className="h-5 w-5 mr-2" />
-            ✏️ Edit Profil
+            Edit Profil
           </Button>
         </div>
 
@@ -188,7 +173,6 @@ export default function Profile() {
               className={`pillmate-card-relaxed p-4 text-center bg-gradient-to-br ${stat.color} slide-up`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="text-2xl mb-1">{stat.emoji}</div>
               <div className="text-2xl font-bold text-gray-800 mb-1">
                 {stat.value}
               </div>
@@ -204,15 +188,13 @@ export default function Profile() {
         >
           <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
             <Bell className="h-6 w-6 text-pillmate-primary" />
-            🔔 Pengaturan Notifikasi
+            Pengaturan Notifikasi
           </h3>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-semibold text-gray-900 flex items-center gap-1">
-                  💊 Pengingat Obat
-                </p>
+                <p className="font-semibold text-gray-900">Pengingat Obat</p>
                 <p className="text-sm text-gray-600">
                   Notifikasi saat waktunya minum obat
                 </p>
@@ -225,9 +207,7 @@ export default function Profile() {
 
             <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-semibold text-gray-900 flex items-center gap-1">
-                  ⏰ Pengingat Jadwal
-                </p>
+                <p className="font-semibold text-gray-900">Pengingat Jadwal</p>
                 <p className="text-sm text-gray-600">
                   Pengingat untuk mengatur jadwal baru
                 </p>
@@ -240,9 +220,7 @@ export default function Profile() {
 
             <div className="flex items-center justify-between p-4 bg-white/60 rounded-2xl">
               <div>
-                <p className="font-semibold text-gray-900 flex items-center gap-1">
-                  📊 Laporan Mingguan
-                </p>
+                <p className="font-semibold text-gray-900">Laporan Mingguan</p>
                 <p className="text-sm text-gray-600">
                   Ringkasan progres konsumsi obat
                 </p>
@@ -265,7 +243,7 @@ export default function Profile() {
             Health Champion!
           </h4>
           <p className="text-sm text-gray-600 mb-4">
-            Anda memiliki tingkat kepatuhan 89% - Luar biasa! 🎉
+            Anda memiliki tingkat kepatuhan 89% - Luar biasa!
           </p>
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
@@ -299,14 +277,13 @@ export default function Profile() {
           ))}
         </div>
 
-        {/* Logout Button */}
+        {/* Logout Button - without door icon */}
         <Button
           variant="outline"
           className="w-full border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 rounded-2xl py-4 transition-all duration-300 slide-up"
           style={{ animationDelay: "0.8s" }}
         >
-          <LogOut className="h-5 w-5 mr-2" />
-          🚪 Keluar dari PillMate
+          Keluar dari PillMate
         </Button>
 
         {/* App Info */}
@@ -316,13 +293,13 @@ export default function Profile() {
         >
           <div className="pillmate-card-relaxed p-6 bg-gradient-to-r from-relaxed-pink/10 to-relaxed-blue/10">
             <p className="text-sm text-gray-500 mb-2 font-medium">
-              PillMate v1.0.0 🚀
+              PillMate v1.0.0
             </p>
             <p className="text-xs text-gray-400">
               © 2024 PillMate. Dibuat dengan ❤️ untuk kesehatan Anda
             </p>
             <p className="text-xs text-pillmate-primary mt-2 font-medium">
-              Terima kasih telah mempercayai kami! 🙏
+              Terima kasih telah mempercayai kami!
             </p>
           </div>
         </div>

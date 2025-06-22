@@ -17,6 +17,14 @@ interface HomeProps {
 }
 
 export default function Home({ onShowNotification }: HomeProps) {
+  // Get current date
+  const today = new Date();
+  const currentDate = today.toLocaleDateString("id-ID", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
   const [medications, setMedications] = useState<Medication[]>([
     {
       id: "1",
@@ -77,16 +85,16 @@ export default function Home({ onShowNotification }: HomeProps) {
 
       {/* Header */}
       <header className="relative pillmate-gradient-soft text-gray-800 p-6 rounded-b-3xl shadow-soft-lg backdrop-blur-sm">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-white/30 rounded-2xl flex items-center justify-center backdrop-blur-sm">
               <User className="h-6 w-6 text-pillmate-primary" />
             </div>
             <div>
-              <p className="text-sm text-pillmate-primary/70 font-medium">
-                Halo Pengguna
-              </p>
               <h1 className="text-xl font-bold text-gray-900">Hikmah</h1>
+              <p className="text-xs text-pillmate-primary/70 font-medium">
+                {currentDate}
+              </p>
             </div>
           </div>
           <div className="flex space-x-2">

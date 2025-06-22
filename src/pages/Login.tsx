@@ -31,16 +31,16 @@ export default function Login({ onLogin }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pillmate-light via-relaxed-pink to-relaxed-blue">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-pillmate-secondary/30 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-purple-200/30 rounded-full blur-xl animate-float"></div>
         <div
-          className="absolute top-40 right-20 w-32 h-32 bg-relaxed-blue/40 rounded-full blur-2xl animate-float"
+          className="absolute top-40 right-20 w-32 h-32 bg-blue-200/40 rounded-full blur-2xl animate-float"
           style={{ animationDelay: "2s" }}
         ></div>
         <div
-          className="absolute bottom-20 left-1/3 w-24 h-24 bg-relaxed-pink/30 rounded-full blur-xl animate-float"
+          className="absolute bottom-20 left-1/3 w-24 h-24 bg-pink-200/30 rounded-full blur-xl animate-float"
           style={{ animationDelay: "4s" }}
         ></div>
       </div>
@@ -48,7 +48,7 @@ export default function Login({ onLogin }: LoginProps) {
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8 slide-up">
           <PillMateLogo size="xl" className="justify-center mb-4" />
-          <p className="text-pillmate-primary/80 text-lg font-medium">
+          <p className="text-purple-600/80 text-lg font-medium">
             Sahabat Kesehatan Digital Anda
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function Login({ onLogin }: LoginProps) {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-pillmate-primary hover:text-pillmate-accent transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-500 hover:text-purple-600 transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -107,16 +107,16 @@ export default function Login({ onLogin }: LoginProps) {
 
             <Button
               type="submit"
-              className="w-full pillmate-button text-lg py-4"
+              className="w-full bg-purple-500 hover:bg-purple-600 text-white font-medium py-3 px-6 rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-lg"
             >
-              Masuk ke PillMate
+              Masuk
             </Button>
           </form>
 
           <div className="mt-8 text-center space-y-4">
             <a
               href="#"
-              className="text-pillmate-primary hover:text-pillmate-accent text-sm font-medium transition-colors"
+              className="text-purple-500 hover:text-purple-600 text-sm font-medium transition-colors"
             >
               Lupa Kata Sandi?
             </a>
@@ -125,7 +125,7 @@ export default function Login({ onLogin }: LoginProps) {
               Belum bergabung dengan kami?{" "}
               <a
                 href="#"
-                className="text-pillmate-primary hover:text-pillmate-accent font-medium transition-colors"
+                className="text-purple-500 hover:text-purple-600 font-medium transition-colors"
               >
                 Daftar Sekarang
               </a>
@@ -139,11 +139,11 @@ export default function Login({ onLogin }: LoginProps) {
         >
           <p className="text-xs text-gray-500">
             Dengan masuk, Anda menyetujui{" "}
-            <a href="#" className="text-pillmate-primary hover:underline">
+            <a href="#" className="text-purple-500 hover:underline">
               Syarat & Ketentuan
             </a>{" "}
             dan{" "}
-            <a href="#" className="text-pillmate-primary hover:underline">
+            <a href="#" className="text-purple-500 hover:underline">
               Kebijakan Privasi
             </a>
           </p>
