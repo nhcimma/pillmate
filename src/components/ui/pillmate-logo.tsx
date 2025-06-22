@@ -22,82 +22,67 @@ export function PillMateLogo({
 
   return (
     <div className={cn("flex items-center space-x-3", className)}>
-      {/* Cool Modern Pill Logo */}
+      {/* Modern Health Shield Logo */}
       <div
         className={cn(
           "relative rounded-3xl bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 flex items-center justify-center transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl",
           config.container,
         )}
       >
-        {/* Modern Pill Design */}
+        {/* Health Shield with Heart + Cross Design */}
         <svg
           viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={cn("text-white", config.icon)}
         >
-          {/* Main pill capsule */}
+          {/* Shield Background */}
           <path
-            d="M8 12C8 9.79086 9.79086 8 12 8H20C22.2091 8 24 9.79086 24 12V20C24 22.2091 22.2091 24 20 24H12C9.79086 24 8 22.2091 8 20V12Z"
+            d="M16 4L8 8V16C8 21.5 12 26.2 16 28C20 26.2 24 21.5 24 16V8L16 4Z"
             fill="white"
-            fillOpacity="0.9"
+            fillOpacity="0.95"
           />
 
-          {/* Pill divider line */}
-          <line
-            x1="16"
-            y1="8"
-            x2="16"
-            y2="24"
+          {/* Medical Cross */}
+          <path
+            d="M14 10H18V14H22V18H18V22H14V18H10V14H14V10Z"
+            fill="currentColor"
+            fillOpacity="0.8"
+          />
+
+          {/* Heart Shape at center */}
+          <path
+            d="M16 20C16 20 12 17 12 14C12 12.5 13.5 11 15 11C15.5 11 16 11.2 16 11.5C16 11.2 16.5 11 17 11C18.5 11 20 12.5 20 14C20 17 16 20 16 20Z"
+            fill="currentColor"
+            fillOpacity="0.6"
+            transform="translate(0, -1) scale(0.7)"
+          />
+
+          {/* Pulse Line */}
+          <path
+            d="M6 16L8 16L10 12L12 20L14 8L16 24L18 12L20 20L22 16L26 16"
             stroke="currentColor"
             strokeWidth="1.5"
             strokeOpacity="0.7"
-          />
-
-          {/* Left side pattern */}
-          <circle
-            cx="12"
-            cy="14"
-            r="1.5"
-            fill="currentColor"
-            fillOpacity="0.6"
-          />
-          <circle cx="12" cy="18" r="1" fill="currentColor" fillOpacity="0.4" />
-
-          {/* Right side pattern */}
-          <circle
-            cx="20"
-            cy="14"
-            r="1.5"
-            fill="currentColor"
-            fillOpacity="0.6"
-          />
-          <circle cx="20" cy="18" r="1" fill="currentColor" fillOpacity="0.4" />
-
-          {/* Medical cross on left side */}
-          <path
-            d="M11 12H13M12 11V13"
-            stroke="currentColor"
-            strokeWidth="1"
+            fill="none"
             strokeLinecap="round"
-            strokeOpacity="0.7"
+            strokeLinejoin="round"
+            transform="translate(0, 2) scale(0.6)"
           />
 
           {/* Subtle highlight */}
           <path
-            d="M10 10C10.5 9.5 11.5 9 13 9H19C20.5 9 21.5 9.5 22 10"
-            stroke="white"
-            strokeWidth="0.5"
-            strokeOpacity="0.5"
-            strokeLinecap="round"
+            d="M8 8L16 4L24 8V10L16 6L8 10V8Z"
+            fill="white"
+            fillOpacity="0.3"
           />
         </svg>
 
         {/* Glowing effect */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-transparent opacity-50"></div>
 
-        {/* Small indicator dot */}
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full shadow-sm animate-pulse"></div>
+        {/* Health indicator dot */}
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full shadow-sm animate-pulse"></div>
       </div>
 
       {/* Logo Text */}
